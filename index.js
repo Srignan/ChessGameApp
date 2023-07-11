@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const { User, Friend, Game } = require('./chessSchema');
 
-const mongoURI = 'mongodb+srv://Srignan:BurntSeaweed49@mernchessapp.mdabnjm.mongodb.net/ChessGameApp';
+const mongoURI = 'mongodb+srv://Srignan:Password@mernchessapp.mdabnjm.mongodb.net/ChessGameApp';
 
 mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
