@@ -1,13 +1,21 @@
-const mongoose = require('mongoose');
-const { User, Friend, Game } = require('./chessSchema');
+const { app } = require("./server.js");
+const mongodb = require("mongodb");
 
-const mongoURI = 'mongodb+srv://Srignan:Password@mernchessapp.mdabnjm.mongodb.net/ChessGameApp';
+const port = process.env.PORT || 8000
+
+const mongoose = require("mongoose");
+const { User, Friend, Game } = require("./chessSchema.js");
+
+const mongoURI = process.env.MONGODB_URI || 'mongodb+srv://Srignan:BurntSeaweed49@mernchessapp.mdabnjm.mongodb.net';
 
 mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => {
-    console.log('Connected to MongoDB');
+  .then(async client => {
+    console.log('Connected to MongoDB')
     // Start your application or perform database operations here
+    app.listen(port, () => {
+      console.log(`listening on ports ${port}`)
+    })
   })
   .catch((error) => {
-    console.error('Failed to connect to MongoDB', error);
-  });
+    console.error('Failed to connect to MongoDB', error)
+  })
