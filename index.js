@@ -6,7 +6,7 @@ const port = process.env.PORT || 8000
 const mongoose = require("mongoose");
 const { User, Friend, Game } = require("./chessSchema.js");
 
-const mongoURI = process.env.MONGODB_URI || 'mongodb+srv://Srignan:BurntSeaweed49@mernchessapp.mdabnjm.mongodb.net';
+const mongoURI = process.env.MONGODB_URI;
 
 mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(async client => {
