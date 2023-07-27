@@ -4,7 +4,7 @@ import PortalPopup from "../components/PortalPopup";
 import styles from "./GameComputer.module.css";
 import './pieces';
 import './ui';
-import './chessBoard';
+import './chessBoard'; 
 
 const GameComputer = () => {
   const [isPopupLeaveLargeOpen, setPopupLeaveLargeOpen] = useState(false);
