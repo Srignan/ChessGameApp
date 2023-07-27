@@ -137,6 +137,11 @@ const GameComputer = () => {
             className={styles.chessboardcontainer}
             id="divChessboardContainer"
           />
+          <div id="chessBoard"></div>
+          
+          <script src="pieces.js"></script>
+          <script src="ui.js"></script>
+          <script src="chessBoard.js"></script>
         </div>
         <div className={styles.content3Bottomuser}>
           <div className={styles.textuser2score}>Score: 5</div>
