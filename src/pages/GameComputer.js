@@ -333,8 +333,7 @@ const GameComputer = () => {
       )}
     </>
   );
-
-  createBoard();
 };
 
+createBoard();
 export default GameComputer;
