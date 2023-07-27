@@ -1,5 +1,5 @@
-import 'src/pages/pieces.js';
-import 'src/pages/ui.js';
+import './pieces';
+import './ui.js';
 
 const chessBoard = document.querySelector("#chessBoard"); 
 const playerDisplay = document.querySelector("#player");
