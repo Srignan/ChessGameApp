@@ -1,3 +1,6 @@
+import './pieces';
+import './ui';
+
 const chessBoard = document.querySelector("#chessBoard"); 
 const playerDisplay = document.querySelector("#player");
 const numRanks = 8;
