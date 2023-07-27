@@ -922,7 +922,7 @@ function handleCheckKnight(kingSquareId, pieceSquareId, kingIsWhite)
 	console.log(allLegalMovesWhite);
 }
 
-function handleCheckBishop(kingSquareId, pieceSquareId, kingIsWhite)
+function handleCheckPawn(kingSquareId, pieceSquareId, kingIsWhite)
 {
 	let blockMoves = [];
 	let tempSquareId;
