@@ -334,12 +334,7 @@ const GameComputer = () => {
     </>
   );
 
-  useEffect(() => {
-  let ignore = false;
-  
-  if (!ignore)  createBoard()
-  return () => { ignore = true; }
-  },[]);
+  createBoard();
 };
 
 export default GameComputer;
