@@ -2150,6 +2150,8 @@ function dragDrop(e)
 	playIfValidMove();
 }
 
+Window.onload = chessBoard();
+
 let squares = document.querySelectorAll("#chessBoard .square")
 squares.forEach(square =>
 {
