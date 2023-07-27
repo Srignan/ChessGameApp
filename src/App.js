@@ -4,6 +4,7 @@ import {
   useNavigationType,
   useLocation,
 } from "react-router-dom";
+import Index from "./pages/Index";
 import IndexComputer from "./pages/IndexComputer";
 import UserSearchComputer from "./pages/UserSearchComputer";
 import GameTablet from "./pages/GameTablet";
@@ -190,7 +191,7 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<IndexComputer />} />
+      <Route path="/" element={<Index />} />
       <Route path="/usersearch" element={<UserSearchComputer />} />
       <Route path="/gametablet" element={<GameTablet />} />
       <Route path="/gamemobile" element={<GameMobile />} />
