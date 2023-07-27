@@ -136,7 +136,7 @@ const GameComputer = () => {
         </div>
         <div className={styles.content2Chess}>
           <div className={styles.chessboardcontainer} id="divChessboardContainer">
-            <div id="chessBoard"  onLoad={() => createBoard()}></div>
+            <div id="chessBoard"></div>
           </div>
         </div>
         <div className={styles.content3Bottomuser}>
@@ -333,6 +333,13 @@ const GameComputer = () => {
       )}
     </>
   );
+
+  useEffect(() => {
+  let ignore = false;
+  
+  if (!ignore)  createBoard()
+  return () => { ignore = true; }
+  },[]);
 };
 
 export default GameComputer;
