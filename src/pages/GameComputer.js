@@ -2,9 +2,9 @@ import { useState, useCallback } from "react";
 import PopupLeaveLarge from "../components/PopupLeaveLarge";
 import PortalPopup from "../components/PortalPopup";
 import styles from "./GameComputer.module.css";
-import 'src/pages/pieces.js';
-import 'src/pages/ui.js';
-import 'src/pages/chessBoard.js'; 
+import './pieces';
+import './ui';
+import './chessBoard'; 
 
 const GameComputer = () => {
   const [isPopupLeaveLargeOpen, setPopupLeaveLargeOpen] = useState(false);
