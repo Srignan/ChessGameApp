@@ -1,4 +1,4 @@
-const chessBoard = document.querySelector("#chessBoard");
+const chessBoard = document.querySelector("#chessBoard"); 
 const playerDisplay = document.querySelector("#player");
 const numRanks = 8;
 const numFiles = 8;
