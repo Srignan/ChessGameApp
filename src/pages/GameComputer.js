@@ -139,9 +139,9 @@ const GameComputer = () => {
           />
           <div id="chessBoard"></div>
           
-          <script src="/pages/pieces.js"></script>
-          <script src="/pages/ui.js"></script>
-          <script src="/pages/chessBoard.js"></script>
+          <script src="/src/pages/pieces.js"></script>
+          <script src="/src/pages/ui.js"></script>
+          <script src="/src/pages/chessBoard.js"></script>
         </div>
         <div className={styles.content3Bottomuser}>
           <div className={styles.textuser2score}>Score: 5</div>
