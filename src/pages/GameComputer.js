@@ -136,7 +136,7 @@ const GameComputer = () => {
         </div>
         <div className={styles.content2Chess}>
           <div className={styles.chessboardcontainer} id="divChessboardContainer">
-            <div id="chessBoard"  onload="createBoard()"></div>
+            <div id="chessBoard"  onLoad="createBoard()"></div>
           </div>
         </div>
         <div className={styles.content3Bottomuser}>
