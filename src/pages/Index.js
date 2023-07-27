@@ -2,14 +2,14 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import IndexComputer from './indexComputer'
-import IndexTablet from './indexTablet';
-import IndexMobile from './indexMobile';
+import IndexComputer from './IndexComputer'
+import IndexTablet from './IndexTablet';
+import IndexMobile from './IndexMobile';
 
 // Import all CSS variants.
-import "./indexComputer.module.css";
-import "./indexTablet.module.css";
-import "./indexMobile.module.css";
+import "./IndexComputer.module.css";
+import "./IndexTablet.module.css";
+import "./IndexMobile.module.css";
 
 class Index extends React.Component {
     constructor(props) {
