@@ -136,11 +136,9 @@ const GameComputer = () => {
             <b className={styles.textuser1}>Username1</b>
           </div>
           <div className={styles.content2Chess}>
-            <div
-              className={styles.chessboardcontainer}
-              id="divChessboardContainer"
-            />
-            <div id="chessBoard"></div>
+            <div className={styles.chessboardcontainer} id="divChessboardContainer">
+              <div id="chessBoard"></div>
+            </div>
           </div>
           <div className={styles.content3Bottomuser}>
             <div className={styles.textuser2score}>Score: 5</div>
