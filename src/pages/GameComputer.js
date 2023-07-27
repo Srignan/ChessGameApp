@@ -335,5 +335,4 @@ const GameComputer = () => {
   );
 };
 
-createBoard();
 export default GameComputer;
