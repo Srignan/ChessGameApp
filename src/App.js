@@ -4,11 +4,8 @@ import {
   useNavigationType,
   useLocation,
 } from "react-router-dom";
-import IndexComputer from "./pages/IndexComputer";
 import Index from "./pages/Index";
 import UserSearchComputer from "./pages/UserSearchComputer";
-import GameTablet from "./pages/GameTablet";
-import GameMobile from "./pages/GameMobile";
 import LandingComputer from "./pages/LandingComputer";
 import ProfileComputer from "./pages/ProfileComputer";
 import GameComputer from "./pages/GameComputer";
