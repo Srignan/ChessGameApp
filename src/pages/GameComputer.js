@@ -137,8 +137,6 @@ const GameComputer = () => {
         <div className={styles.content2Chess}>
           <div className={styles.chessboardcontainer} id="divChessboardContainer">
             <div id="chessBoard"></div>
-            <script src="pieces.js"></script>
-	    <script src="ui.js"></script>
 	    <script src="chessBoard.js"></script>
           </div>
         </div>
