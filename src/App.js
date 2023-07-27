@@ -5,6 +5,8 @@ import {
   useLocation,
 } from "react-router-dom";
 import Index from "./pages/Index";
+import IndexTablet from "./pages/IndexTablet";
+import IndexMobile from "./pages/IndexMobile";
 import UserSearchComputer from "./pages/UserSearchComputer";
 import LandingComputer from "./pages/LandingComputer";
 import ProfileComputer from "./pages/ProfileComputer";
