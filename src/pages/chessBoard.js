@@ -2163,4 +2163,4 @@ squares.forEach(square =>
 	square.addEventListener("drop", dragDrop);
 });
 
-export default chessBoard;
+export default createBoard;
