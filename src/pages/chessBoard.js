@@ -253,6 +253,7 @@ function populateDefaultKingMoves(kingId, isWhite)
 	let kingRank = Math.floor(kingId / numRanks);
 	let kingFile = kingId % numFiles;
 	let endId;
+	let endSquare;
 
 	if(isWhite)
 	{
