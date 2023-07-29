@@ -507,7 +507,7 @@
   font-family: var(--font-outfit);
 }
 
-.chessBoard
+#chessBoard
 {
 	width: 320px;
 	height: 320px;
