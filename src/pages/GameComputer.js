@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import PopupLeaveLarge from "../components/PopupLeaveLarge";
 import PortalPopup from "../components/PortalPopup";
 import styles from "./GameComputer.module.css";
-import "./chessBoard.js";
+import chessBoard from "./chessBoard.js";
 
 const GameComputer = () => {
   const [isPopupLeaveLargeOpen, setPopupLeaveLargeOpen] = useState(false);
