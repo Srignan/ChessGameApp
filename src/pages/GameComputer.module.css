@@ -532,7 +532,7 @@
 	z-index: -10;
 }
 
-.piece svg path
+.svgPiece
 {
 	position: relative;
 	z-index: -11;
@@ -563,7 +563,7 @@
 	z-index: 9;
 }
 
-.circlePiece svg
+.svgCirclePiece
 {
 	width: 40px;
 	height: 40px;
@@ -572,7 +572,7 @@
 	z-index: -5;
 }
 
-.circleNoPiece svg
+.svgCircleNoPiece
 {
 	width: 12.5px;
 	height: 12.5px;
@@ -582,7 +582,7 @@
 	z-index: -5;
 }
 
-.uiElement svg path
+.svgPathUiElement
 {
 	position: relative;
 	z-index: -6;
