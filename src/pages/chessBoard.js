@@ -83,7 +83,7 @@ function createBoard()
 		chessBoard.append(square);
 	});
 
-	let pieces = document.querySelectorAll(styles.piece);
+	let pieces = document.querySelectorAll("[class='" + styles.piece + "']");
 	let pieceId;
 	legalMoves = [];
 	pieces.forEach((piece, i) =>
