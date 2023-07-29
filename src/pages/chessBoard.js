@@ -2150,10 +2150,10 @@ function dragDrop(e)
 	playIfValidMove();
 }
 
-document.addEventListener("DOMContentLoaded", function ()
+/*document.addEventListener("DOMContentLoaded", function ()
 {
 	createBoard();
-});
+});*/
 
 let squares = document.querySelectorAll("#chessBoard .square")
 squares.forEach(square =>
