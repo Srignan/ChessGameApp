@@ -1,4 +1,4 @@
-const chessBoard = document.querySelector("#chessBoard"); 
+const chessBoard; 
 const playerDisplay = document.querySelector("#player");
 const numRanks = 8;
 const numFiles = 8;
@@ -54,6 +54,7 @@ var boardMatrix =
 
 function createBoard()
 {
+	const chessBoard = document.querySelector("#chessBoard"); 
 	boardMatrix.forEach((startingPiece, i) => 
 	{
 		const square = document.createElement("div");
