@@ -1,0 +1,90 @@
+#chessBoard
+{
+	width: 320px;
+	height: 320px;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.square
+{
+	width: 40px;
+	height: 40px;
+	z-index: 100;
+	position: relative;
+}
+
+.piece svg
+{
+	width: 35px;
+	height: 35px;
+	margin: 2.5px;
+	position: relative;
+	z-index: -10;
+}
+
+.piece svg path
+{
+	position: relative;
+	z-index: -11;
+}
+
+.piece
+{
+	position: relative;
+	z-index: 10;
+}
+
+.uiElement
+{
+	width: 40px;
+	height: 40px;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	z-index: 11;
+}
+
+#enPassant
+{
+	width: 40px;
+	height: 40px;
+	opacity: 1;
+	position: relative;
+	z-index: 9;
+}
+
+#circlePiece svg
+{
+	width: 40px;
+	height: 40px;
+	opacity: 0.1;
+	position: relative;
+	z-index: -5;
+}
+
+#circleNoPiece svg
+{
+	width: 12.5px;
+	height: 12.5px;
+	margin: 13.75px;
+	opacity: 0.1;
+	position: relative;
+	z-index: -5;
+}
+
+.uiElement svg path
+{
+	position: relative;
+	z-index: -6;
+}
+
+.green
+{
+	background-color: rgb(125,148,93);
+}
+
+.tan
+{
+	background-color: rgb(238,237,213);
+}
