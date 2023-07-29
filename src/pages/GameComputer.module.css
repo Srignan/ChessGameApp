@@ -565,35 +565,35 @@
 
 #circlePiece svg
 {
-	width: 40px !important;
-	height: 40px !important;
-	opacity: 0.1 !important;
-	position: relative !important;
-	z-index: -5 !important;
+	width: 40px;
+	height: 40px;
+	opacity: 0.1;
+	position: relative;
+	z-index: -5;
 }
 
 #circleNoPiece svg
 {
-	width: 12.5px !important;
-	height: 12.5px !important;
-	margin: 13.75px !important;
-	opacity: 0.1 !important;
-	position: relative !important;
-	z-index: -5 !important;
+	width: 12.5px;
+	height: 12.5px;
+	margin: 13.75px;
+	opacity: 0.1;
+	position: relative;
+	z-index: -5;
 }
 
 .uiElement svg path
 {
-	position: relative !important;
-	z-index: -6 !important;
+	position: relative;
+	z-index: -6;
 }
 
 .green
 {
-	background-color: rgb(125,148,93) !important;
+	background-color: rgb(125,148,93);
 }
 
 .tan
 {
-	background-color: rgb(238,237,213) !important;
+	background-color: rgb(238,237,213);
 }
