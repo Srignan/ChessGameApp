@@ -577,7 +577,7 @@
   font-size: var(--font-size-3xl);
   color: var(--inputform);
 }
-.gamecomputer {
+.gamecomputer:not(.chessBoard) {
   position: relative;
   width: 100%;
   overflow: hidden;
