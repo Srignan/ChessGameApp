@@ -67,7 +67,7 @@
   height: 700px;
   overflow: hidden;
 }
-.content2Chess {
+.content2Chess:not(#chessBoard) {
   align-self: stretch;
   position: relative;
   background-color: var(--color-gray-200);
