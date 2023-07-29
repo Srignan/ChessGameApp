@@ -58,7 +58,7 @@ function createBoard()
 	boardMatrix.forEach((startingPiece, i) => 
 	{
 		const square = document.createElement("div");
-		square.classList.add({styles.square});
+		square.classList.add(styles.square);
 		square.innerHTML = startingPiece;
 		if(square.children[0])
 		{
