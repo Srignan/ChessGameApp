@@ -2150,6 +2150,11 @@ function dragDrop(e)
 	playIfValidMove();
 }
 
+document.addEventListener("DOMContentLoaded", function ()
+{
+	createBoard();
+});
+
 createBoard();
 
 let squares = document.querySelectorAll("#chessBoard .square")
