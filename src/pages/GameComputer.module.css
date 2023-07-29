@@ -509,25 +509,25 @@
 
 .chessBoard
 {
-	width: 640px;
-	height: 640px;
+	width: 700px;
+	height: 700px;
 	display: flex;
 	flex-wrap: wrap;
 }
 
 .square
 {
-	width: 80px;
-	height: 80px;
+	width: 87.5px;
+	height: 87.5px;
 	z-index: 100;
 	position: relative;
 }
 
 .svgPiece
 {
-	width: 70px;
-	height: 70px;
-	margin: 5px;
+	width: 76.5625px;
+	height: 76.5625px;
+	margin: 5.46875px;
 	position: relative;
 	z-index: -10;
 }
@@ -546,8 +546,8 @@
 
 .uiElement
 {
-	width: 80px;
-	height: 80px;
+	width: 87.5px;
+	height: 87.5px;
 	position: absolute;
 	top: 0px;
 	left: 0px;
@@ -556,8 +556,8 @@
 
 .enPassant
 {
-	width: 80px;
-	height: 80px;
+	width: 87.5px;
+	height: 87.5px;
 	opacity: 1;
 	position: relative;
 	z-index: 9;
@@ -565,8 +565,8 @@
 
 .svgCirclePiece
 {
-	width: 80px;
-	height: 80px;
+	width: 87.5px;
+	height: 87.5px;
 	opacity: 0.1;
 	position: relative;
 	z-index: -5;
@@ -574,9 +574,9 @@
 
 .svgCircleNoPiece
 {
-	width: 25px;
-	height: 25px;
-	margin: 27.5px;
+	width: 27.34375px;
+	height: 27.34375px;
+	margin: 30.078125px;
 	opacity: 0.1;
 	position: relative;
 	z-index: -5;
