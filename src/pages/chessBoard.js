@@ -64,9 +64,9 @@ function createBoard()
 		{
 			let svgDiv = square.children[0];
 			svgDiv.setAttribute("draggable", true)
-			svgDiv.classList.add(styles.svgPiece);
 			
 			let svg = square.children[0].children[0];
+			svg.classList.add(styles.svgPiece);
 			svg.setAttribute("viewBox", "2.5 2.5 40 40");
 			
 		}
