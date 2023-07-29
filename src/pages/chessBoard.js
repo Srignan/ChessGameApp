@@ -65,7 +65,7 @@ function createBoard()
 			let svgDiv = square.children[0];
 			svgDiv.setAttribute("draggable", true);
 			svgDiv.setAttribute("onDragStart", (e) => this.dragStart(e));
-			svgDiv.setAttribute("onDrop", (e) => this.dragDrop(e);
+			svgDiv.setAttribute("onDrop", (e) => this.dragDrop(e));
 			
 			let svg = square.children[0].children[0];
 			svg.classList.add(styles.svgPiece);
