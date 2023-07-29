@@ -64,6 +64,7 @@ function createBoard()
 		{
 			let svgDiv = square.children[0];
 			svgDiv.setAttribute("draggable", true)
+			svgDiv.classList.add(styles.svgPiece);
 			
 			let svg = square.children[0].children[0];
 			svg.setAttribute("viewBox", "2.5 2.5 40 40");
@@ -2161,7 +2162,7 @@ function dragDrop(e)
 	createBoard();
 });*/
 
-let squares = document.querySelectorAll("#chessBoard .square")
+let squares = document.querySelectorAll("#chessBoard " + styles.square)
 squares.forEach(square =>
 {
 	square.addEventListener("dragstart", dragStart);
