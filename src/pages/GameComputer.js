@@ -121,6 +121,10 @@ const GameComputer = () => {
     setPopupLeaveLarge9Open(false);
   }, []);
 
+useEffect(() => {
+    createBoard();
+  }, []);
+
   return (
     <>
       <div className={styles.gamecomputer}>
