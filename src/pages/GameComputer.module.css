@@ -507,7 +507,7 @@
   font-family: var(--font-outfit);
 }
 
-#chessBoard
+.chessBoard
 {
 	width: 320px;
 	height: 320px;
@@ -554,7 +554,7 @@
 	z-index: 11;
 }
 
-#enPassant
+.enPassant
 {
 	width: 40px;
 	height: 40px;
@@ -563,7 +563,7 @@
 	z-index: 9;
 }
 
-#circlePiece svg
+.circlePiece svg
 {
 	width: 40px;
 	height: 40px;
@@ -572,7 +572,7 @@
 	z-index: -5;
 }
 
-#circleNoPiece svg
+.circleNoPiece svg
 {
 	width: 12.5px;
 	height: 12.5px;
