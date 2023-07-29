@@ -1229,6 +1229,7 @@ function isUnderAttack(endId, isKingWhite)
 function findLegalMovesKing()
 {
 	let endId;
+	let endSquare;
 	let startRank = Math.floor(moveStartId / numRanks);
 	let startFile = moveStartId % numFiles;
 	let castleSquare2;
@@ -1787,6 +1788,7 @@ function playIfValidMove()
 	let rookMoveId;
 	let rookMoveSquare;
 	let rookPiece;
+	let enPassantSquare;
 
 	// If dropped back on starting square return or there are no legal moves
 	if((moveStartId === moveEndId) || (legalMoves === []))
@@ -1982,13 +1984,13 @@ function playIfValidMove()
 
 function clearDefended()
 {
-	allDefendedWhite = document.querySelectorAll("[isDefendedWhite='']");
+	let allDefendedWhite = document.querySelectorAll("[isDefendedWhite='']");
 	allDefendedWhite.forEach((isDefendedWhite) =>
 	{
 		isDefendedWhite.removeAttribute("isDefendedWhite");
 	});
 	
-	allDefendedBlack = document.querySelectorAll("[isDefendedBlack='']");
+	let allDefendedBlack = document.querySelectorAll("[isDefendedBlack='']");
 	allDefendedBlack.forEach((isDefendedBlack) =>
 	{
 		isDefendedBlack.removeAttribute("isDefendedBlack");
@@ -1997,13 +1999,13 @@ function clearDefended()
 
 function clearEnPassantNew()
 {
-	enPassantWhiteOlds = document.querySelectorAll("[enPassantWhite='0']");
+	let enPassantWhiteOlds = document.querySelectorAll("[enPassantWhite='0']");
 	enPassantWhiteOlds.forEach((enPassantWhiteOld) =>
 	{
 		enPassantWhiteOld.removeAttribute("enPassantWhite");
 	});
 	
-	enPassantBlackOlds = document.querySelectorAll("[enPassantBlack='0']");
+	let enPassantBlackOlds = document.querySelectorAll("[enPassantBlack='0']");
 	enPassantBlackOlds.forEach((enPassantBlackOld) =>
 	{
 		enPassantBlackOld.removeAttribute("enPassantBlack");
@@ -2012,25 +2014,25 @@ function clearEnPassantNew()
 
 function progressEnPassant()
 {
-	enPassantWhiteOlds = document.querySelectorAll("[enPassantWhite='1']");
+	let enPassantWhiteOlds = document.querySelectorAll("[enPassantWhite='1']");
 	enPassantWhiteOlds.forEach((enPassantWhiteOld) =>
 	{
 		enPassantWhiteOld.removeAttribute("enPassantWhite");
 	});
 	
-	enPassantBlackOlds = document.querySelectorAll("[enPassantBlack='1']");
+	let enPassantBlackOlds = document.querySelectorAll("[enPassantBlack='1']");
 	enPassantBlackOlds.forEach((enPassantBlackOld) =>
 	{
 		enPassantBlackOld.removeAttribute("enPassantBlack");
 	});
 	
-	enPassantWhiteNews = document.querySelectorAll("[enPassantWhite='0']");
+	let enPassantWhiteNews = document.querySelectorAll("[enPassantWhite='0']");
 	enPassantWhiteNews.forEach((enPassantWhiteNew) =>
 	{
 		enPassantWhiteNew.setAttribute("enPassantWhite", 1);
 	});
 	
-	enPassantBlackNews = document.querySelectorAll("[enPassantBlack='0']");
+	let enPassantBlackNews = document.querySelectorAll("[enPassantBlack='0']");
 	enPassantBlackNews.forEach((enPassantBlackNew) =>
 	{
 		enPassantBlackNew.setAttribute("enPassantBlack", 1);
@@ -2042,7 +2044,7 @@ function showLegalMoves()
 	hideLegalMoves();
 	legalMoves.forEach((moveOption) => 
 	{
-		square = document.querySelector("[squareId='" + moveOption + "']");
+		let square = document.querySelector("[squareId='" + moveOption + "']");
 		if(square.children[0])
 		{
 			const svgDiv = document.createElement("div");
@@ -2068,7 +2070,7 @@ function showLegalMoves()
 
 function hideLegalMoves()
 {
-	uiElements = document.querySelectorAll("div.uiElement");
+	let uiElements = document.querySelectorAll("div.uiElement");
 	uiElements.forEach((uiElement) =>
 	{
 		uiElement.remove();
