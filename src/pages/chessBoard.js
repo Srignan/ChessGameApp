@@ -73,13 +73,13 @@ function createBoard()
 		let rank = Math.floor(i / 8);
 		if (rank % 2 === 0)
 		{
-			square.classList.add(i % 2 === 0 ? {styles.tan} : {styles.green})
+			square.classList.add(i % 2 === 0 ? styles.tan : styles.green)
 		}
 		else
 		{
-			square.classList.add(i % 2 === 0 ? {styles.green} : {styles.tan})
+			square.classList.add(i % 2 === 0 ? styles.green : styles.tan)
 		}
-		square.classList.add({styles.green});
+		square.classList.add(styles.green);
 		chessBoard.append(square);
 	});
 
@@ -2049,7 +2049,7 @@ function showLegalMoves()
 		if(square.children[0])
 		{
 			const svgDiv = document.createElement("div");
-			svgDiv.className = {styles.uiElement};
+			svgDiv.className = styles.uiElement;
 			svgDiv.id = "circlePiece";
 			svgDiv.innerHTML = circlePiece;
 			square.append(svgDiv);
@@ -2059,7 +2059,7 @@ function showLegalMoves()
 		else
 		{
 			const svgDiv = document.createElement("div");
-			svgDiv.className = {styles.uiElement};
+			svgDiv.className = styles.uiElement;
 			svgDiv.id = "circleNoPiece";
 			svgDiv.innerHTML = circleNoPiece;
 			square.append(svgDiv);
@@ -2071,7 +2071,7 @@ function showLegalMoves()
 
 function hideLegalMoves()
 {
-	let uiElements = document.querySelectorAll({styles.uiElement});
+	let uiElements = document.querySelectorAll(styles.uiElement);
 	uiElements.forEach((uiElement) =>
 	{
 		uiElement.remove();
