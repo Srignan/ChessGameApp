@@ -103,8 +103,8 @@ function createBoard()
 		}
 	});
 
-	whiteKingSquareId = Number(document.querySelector("[pieceId='" + 28 + "']").parentNode.getAttribute("squareId"));
-	blackKingSquareId = Number(document.querySelector("[pieceId='" + 4 + "']").parentNode.getAttribute("squareId"));
+	let whiteKingSquareId = Number(document.querySelector("[pieceId='" + 28 + "']").parentNode.getAttribute("squareId"));
+	let blackKingSquareId = Number(document.querySelector("[pieceId='" + 4 + "']").parentNode.getAttribute("squareId"));
 	allLegalMovesWhite = [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]];
 	allLegalMovesBlack = [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]];
 	populateDefaultKingMoves(whiteKingSquareId, true);
