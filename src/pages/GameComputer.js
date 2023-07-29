@@ -141,7 +141,7 @@ useEffect(() => {
         </div>
         <div className={styles.content2Chess}>
           <div className={styles.chessboardcontainer} id="divChessboardContainer">
-            <div className={styles.chessBoard} id="chessBoard"></div>
+            <div id={styles#chessBoard}></div>
 	    <script src="chessBoard.js"></script>
           </div>
         </div>
