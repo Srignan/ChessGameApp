@@ -1591,6 +1591,7 @@ function findLegalMovesBishop()
 function findLegalMovesKnight()
 {
 	let endId;
+	let endSquare;
 	let file = (moveStartId % numFiles);
 	
 	if(file >= 2)
