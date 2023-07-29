@@ -509,91 +509,91 @@
 
 #chessBoard
 {
-	width: 320px;
-	height: 320px;
-	display: flex;
-	flex-wrap: wrap;
+	width: 320px !important;
+	height: 320px !important;
+	display: flex !important;
+	flex-wrap: wrap !important;
 }
 
 .square
 {
-	width: 40px;
-	height: 40px;
-	z-index: 100;
-	position: relative;
+	width: 40px !important;
+	height: 40px !important;
+	z-index: 100 !important;
+	position: relative !important;
 }
 
 .piece svg
 {
-	width: 35px;
-	height: 35px;
-	margin: 2.5px;
-	position: relative;
-	z-index: -10;
+	width: 35px !important;
+	height: 35px !important;
+	margin: 2.5px !important;
+	position: relative !important;
+	z-index: -10 !important;
 }
 
 .piece svg path
 {
-	position: relative;
-	z-index: -11;
+	position: relative !important;
+	z-index: -11 !important;
 }
 
 .piece
 {
-	position: relative;
-	z-index: 10;
+	position: relative !important;
+	z-index: 10 !important;
 }
 
 .uiElement
 {
-	width: 40px;
-	height: 40px;
-	position: absolute;
-	top: 0px;
-	left: 0px;
-	z-index: 11;
+	width: 40px !important;
+	height: 40px !important;
+	position: absolute !important;
+	top: 0px !important;
+	left: 0px !important;
+	z-index: 11 !important;
 }
 
 #enPassant
 {
-	width: 40px;
-	height: 40px;
-	opacity: 1;
-	position: relative;
-	z-index: 9;
+	width: 40px !important;
+	height: 40px !important;
+	opacity: 1 !important;
+	position: relative !important;
+	z-index: 9 !important;
 }
 
 #circlePiece svg
 {
-	width: 40px;
-	height: 40px;
-	opacity: 0.1;
-	position: relative;
-	z-index: -5;
+	width: 40px !important;
+	height: 40px !important;
+	opacity: 0.1 !important;
+	position: relative !important;
+	z-index: -5 !important;
 }
 
 #circleNoPiece svg
 {
-	width: 12.5px;
-	height: 12.5px;
-	margin: 13.75px;
-	opacity: 0.1;
-	position: relative;
-	z-index: -5;
+	width: 12.5px !important;
+	height: 12.5px !important;
+	margin: 13.75px !important;
+	opacity: 0.1 !important;
+	position: relative !important;
+	z-index: -5 !important;
 }
 
 .uiElement svg path
 {
-	position: relative;
-	z-index: -6;
+	position: relative !important;
+	z-index: -6 !important;
 }
 
 .green
 {
-	background-color: rgb(125,148,93);
+	background-color: rgb(125,148,93) !important;
 }
 
 .tan
 {
-	background-color: rgb(238,237,213);
+	background-color: rgb(238,237,213) !important;
 }
