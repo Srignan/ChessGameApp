@@ -486,26 +486,6 @@
   font-size: var(--font-size-3xl);
   color: var(--inputform);
 }
-.gamecomputer:not(#chessBoard) {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  padding: var(--padding-54xl) 0 0;
-  box-sizing: border-box;
-  align-items: center;
-  justify-content: flex-start;
-  gap: var(--gap-4xs);
-  background-image: url(/public/gamecomputer@3x.png);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: top;
-  text-align: right;
-  font-size: var(--font-size-5xl);
-  color: var(--color-darkgray-100);
-  font-family: var(--font-outfit);
-}
 
 #chessBoard
 {
