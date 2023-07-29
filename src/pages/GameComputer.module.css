@@ -523,7 +523,7 @@
 	position: relative;
 }
 
-.piece svg
+.svgPiece
 {
 	width: 35px;
 	height: 35px;
@@ -532,7 +532,7 @@
 	z-index: -10;
 }
 
-.svgPiece
+.svgPathPiece
 {
 	position: relative;
 	z-index: -11;
