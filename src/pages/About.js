@@ -5,7 +5,7 @@ import AboutComputer from './AboutComputer';
 import AboutTablet from './AboutTablet';
 import AboutMobile from './AboutMobile';
 
-class Index extends React.Component {
+class About extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
