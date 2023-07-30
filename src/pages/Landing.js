@@ -5,7 +5,7 @@ import LandingComputer from './LandingComputer';
 import LandingTablet from './LandingTablet';
 import LandingMobile from './LandingMobile';
 
-class Index extends React.Component {
+class Landing extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
