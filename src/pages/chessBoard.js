@@ -2054,6 +2054,8 @@ function showLegalMoves()
 		{
 			const svgDiv = document.createElement("div");
 			svgDiv.className = styles.svgCirclePiece;
+			svgDiv.children[0].className = styles.svgPathUiElement;
+			svgDiv.children[0].children[0].className = styles.svgPathUiElement;
 			svgDiv.id = "circlePiece";
 			svgDiv.innerHTML = circlePiece;
 			square.append(svgDiv);
@@ -2064,6 +2066,8 @@ function showLegalMoves()
 		{
 			const svgDiv = document.createElement("div");
 			svgDiv.className = styles.svgCircleNoPiece;
+			svgDiv.children[0].className = styles.svgPathUiElement;
+			svgDiv.children[0].children[0].className = styles.svgPathUiElement;
 			svgDiv.id = "circleNoPiece";
 			svgDiv.innerHTML = circleNoPiece;
 			square.append(svgDiv);
