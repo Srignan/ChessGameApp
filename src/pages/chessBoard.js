@@ -4,6 +4,8 @@ const numRanks = 8;
 const numFiles = 8;
 const endOfRank = 7;
 const endOfFile = 56;
+var isSendingMove = true;
+var playerColor = true;
 var moveStartPiece;
 var moveStartId;
 var moveEndSquare;
@@ -1790,180 +1792,187 @@ function findLegalMoves()
 
 function playIfValidMove()
 {
-	let rookMoveId;
-	let rookMoveSquare;
-	let rookPiece;
-	let enPassantSquare;
-
-	// If dropped back on starting square return or there are no legal moves
-	if((moveStartId === moveEndId) || (legalMoves === []))
+	if(isSendingMove)
 	{
-		clearEnPassantNew();
-		return;
-	}
-	// If a piece is on the target square run as capture
-	else if(moveEndSquare.children[0])
-	{
-		if(moveStartPiece.id.includes("white"))
+		let rookMoveId;
+		let rookMoveSquare;
+		let rookPiece;
+		let enPassantSquare;
+	
+		// If dropped back on starting square return or there are no legal moves
+		if((moveStartId === moveEndId) || (legalMoves === []))
 		{
-			if((colorTurn === "white") && legalMoves.includes(moveEndId))
+			clearEnPassantNew();
+			return;
+		}
+		// If a piece is on the target square run as capture
+		else if(moveEndSquare.children[0])
+		{
+			if(moveStartPiece.id.includes("white"))
 			{
-				if((moveStartPiece.id.includes("King") || moveStartPiece.id.includes("Rook")) && (Number(moveStartPiece.getAttribute("hasMoved")) === 0))
+				if((colorTurn === "white") && legalMoves.includes(moveEndId))
 				{
-					moveStartPiece.setAttribute("hasMoved", 1);
+					if((moveStartPiece.id.includes("King") || moveStartPiece.id.includes("Rook")) && (Number(moveStartPiece.getAttribute("hasMoved")) === 0))
+					{
+						moveStartPiece.setAttribute("hasMoved", 1);
+					}
+					moveEndSquare.append(moveStartPiece);
+					moveEndSquare.children[0].remove();
 				}
-				moveEndSquare.append(moveStartPiece);
-				moveEndSquare.children[0].remove();
+				else
+				{
+					return;
+				}
 			}
 			else
 			{
-				return;
+				if((colorTurn === "black") && legalMoves.includes(moveEndId))
+				{
+					if((moveStartPiece.id.includes("King") || moveStartPiece.id.includes("Rook")) && (Number(moveStartPiece.getAttribute("hasMoved")) === 0))
+					{
+						moveStartPiece.setAttribute("hasMoved", 1);
+					}
+					moveEndSquare.append(moveStartPiece);
+					moveEndSquare.children[0].remove();
+				}
+				else
+				{
+					return;
+				}
+			}
+		}
+		// If the target square is empty run as normal move
+		else
+		{
+			if(moveStartPiece.id.includes("white"))
+			{
+				if((colorTurn === "white") && legalMoves.includes(moveEndId))
+				{
+					if((moveStartPiece.id.includes("King") || moveStartPiece.id.includes("Rook")) && (Number(moveStartPiece.getAttribute("hasMoved")) === 0))
+					{
+						moveStartPiece.setAttribute("hasMoved", 1);
+					}
+					if(moveStartPiece.id.includes("King"))
+					{
+						if((moveEndId - moveStartId) === 2)
+						{
+							rookPiece = document.querySelector("[pieceId='" + (15 + 16) + "']");
+							rookMoveId = moveEndId - 1;
+							rookMoveSquare = document.querySelector("[squareId='" + rookMoveId + "']");
+							rookMoveSquare.append(rookPiece);
+						}
+						else if((moveStartId - moveEndId) === 2)
+						{
+							rookPiece = document.querySelector("[pieceId='" + (8 + 16) + "']");
+							rookMoveId = moveEndId + 1;
+							rookMoveSquare = document.querySelector("[squareId='" + rookMoveId + "']");
+							rookMoveSquare.append(rookPiece);
+						}
+					}
+					if(moveEndSquare.hasAttribute("enPassantBlack") && (moveStartPiece.id.includes("Pawn")))
+					{
+						let capturedId = Number(moveEndSquare.getAttribute("squareId")) + moveDown;
+						let capturedSquare = document.querySelector("[squareId='" + capturedId + "']");
+						moveEndSquare.append(moveStartPiece);
+						capturedSquare.children[0].remove();
+					}
+					else
+					{
+						if(moveStartPiece.id.includes("Pawn") && ((moveDown * 2) === Math.abs(moveStartId - moveEndId)))
+						{
+							enPassantSquare = document.querySelector("[squareId='" + (moveEndId + moveDown) + "']");
+							enPassantSquare.setAttribute("enPassantWhite", 0);
+						}
+						moveEndSquare.append(moveStartPiece);
+					}
+				}
+				else
+				{
+					return;
+				}
+			}
+			else
+			{
+				if((colorTurn === "black") && legalMoves.includes(moveEndId))
+				{
+					if((moveStartPiece.id.includes("King") || moveStartPiece.id.includes("Rook")) && (Number(moveStartPiece.getAttribute("hasMoved")) === 0))
+					{
+						moveStartPiece.setAttribute("hasMoved", 1);
+					}
+					if(moveStartPiece.id.includes("King"))
+					{
+						if((moveEndId - moveStartId) === 2)
+						{
+							rookPiece = document.querySelector("[pieceId='" + 7 + "']");
+							rookMoveId = moveEndId - 1;
+							rookMoveSquare = document.querySelector("[squareId='" + rookMoveId + "']");
+							rookMoveSquare.append(rookPiece);
+						}
+						else if((moveStartId - moveEndId) === 2)
+						{
+							rookPiece = document.querySelector("[pieceId='" + 0 + "']");
+							rookMoveId = moveEndId + 1;
+							rookMoveSquare = document.querySelector("[squareId='" + rookMoveId + "']");
+							rookMoveSquare.append(rookPiece);
+						}
+					}
+					if(moveEndSquare.hasAttribute("enPassantWhite") && (moveStartPiece.id.includes("Pawn")))
+					{
+						let capturedId = Number(moveEndSquare.getAttribute("id")) + moveUp;
+						let capturedSquare = document.querySelector("[squareId='" + capturedId + "']");
+						moveEndSquare.append(moveStartPiece);
+						capturedSquare.children[0].remove();
+					}
+					else
+					{
+						if(moveStartPiece.id.includes("Pawn") && ((moveDown * 2) === Math.abs(moveStartId - moveEndId)))
+						{
+							enPassantSquare = document.querySelector("[squareId='" + (moveEndId + moveUp) + "']");
+							enPassantSquare.setAttribute("enPassantBlack", 0);
+						}
+						moveEndSquare.append(moveStartPiece);
+					}
+				}
+				else
+				{
+					return;
+				}
+			}
+		}
+		
+		changeColorTurn();
+		progressEnPassant();
+		clearDefended();
+	
+		let whiteKingSquareId = Number(document.querySelector("[pieceId='" + 28 + "']").parentNode.getAttribute("squareId"));
+		let blackKingSquareId = Number(document.querySelector("[pieceId='" + 4 + "']").parentNode.getAttribute("squareId"));
+	
+		allLegalMovesWhite = [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]];
+		allLegalMovesBlack = [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]];
+		populateDefaultKingMoves(whiteKingSquareId, true);
+		populateDefaultKingMoves(blackKingSquareId, false);
+		populateAllLegalMovesWhite();
+		populateAllLegalMovesBlack();
+		populateAllLegalMovesKings();
+		
+		if(colorTurn === "white")
+		{
+			if(isUnderAttack(whiteKingSquareId, true))
+			{
+				handleCheck(whiteKingSquareId);
 			}
 		}
 		else
 		{
-			if((colorTurn === "black") && legalMoves.includes(moveEndId))
+			if(isUnderAttack(blackKingSquareId, false))
 			{
-				if((moveStartPiece.id.includes("King") || moveStartPiece.id.includes("Rook")) && (Number(moveStartPiece.getAttribute("hasMoved")) === 0))
-				{
-					moveStartPiece.setAttribute("hasMoved", 1);
-				}
-				moveEndSquare.append(moveStartPiece);
-				moveEndSquare.children[0].remove();
+				handleCheck(blackKingSquareId);
 			}
-			else
-			{
-				return;
-			}
-		}
-	}
-	// If the target square is empty run as normal move
-	else
-	{
-		if(moveStartPiece.id.includes("white"))
-		{
-			if((colorTurn === "white") && legalMoves.includes(moveEndId))
-			{
-				if((moveStartPiece.id.includes("King") || moveStartPiece.id.includes("Rook")) && (Number(moveStartPiece.getAttribute("hasMoved")) === 0))
-				{
-					moveStartPiece.setAttribute("hasMoved", 1);
-				}
-				if(moveStartPiece.id.includes("King"))
-				{
-					if((moveEndId - moveStartId) === 2)
-					{
-						rookPiece = document.querySelector("[pieceId='" + (15 + 16) + "']");
-						rookMoveId = moveEndId - 1;
-						rookMoveSquare = document.querySelector("[squareId='" + rookMoveId + "']");
-						rookMoveSquare.append(rookPiece);
-					}
-					else if((moveStartId - moveEndId) === 2)
-					{
-						rookPiece = document.querySelector("[pieceId='" + (8 + 16) + "']");
-						rookMoveId = moveEndId + 1;
-						rookMoveSquare = document.querySelector("[squareId='" + rookMoveId + "']");
-						rookMoveSquare.append(rookPiece);
-					}
-				}
-				if(moveEndSquare.hasAttribute("enPassantBlack") && (moveStartPiece.id.includes("Pawn")))
-				{
-					let capturedId = Number(moveEndSquare.getAttribute("squareId")) + moveDown;
-					let capturedSquare = document.querySelector("[squareId='" + capturedId + "']");
-					moveEndSquare.append(moveStartPiece);
-					capturedSquare.children[0].remove();
-				}
-				else
-				{
-					if(moveStartPiece.id.includes("Pawn") && ((moveDown * 2) === Math.abs(moveStartId - moveEndId)))
-					{
-						enPassantSquare = document.querySelector("[squareId='" + (moveEndId + moveDown) + "']");
-						enPassantSquare.setAttribute("enPassantWhite", 0);
-					}
-					moveEndSquare.append(moveStartPiece);
-				}
-			}
-			else
-			{
-				return;
-			}
-		}
-		else
-		{
-			if((colorTurn === "black") && legalMoves.includes(moveEndId))
-			{
-				if((moveStartPiece.id.includes("King") || moveStartPiece.id.includes("Rook")) && (Number(moveStartPiece.getAttribute("hasMoved")) === 0))
-				{
-					moveStartPiece.setAttribute("hasMoved", 1);
-				}
-				if(moveStartPiece.id.includes("King"))
-				{
-					if((moveEndId - moveStartId) === 2)
-					{
-						rookPiece = document.querySelector("[pieceId='" + 7 + "']");
-						rookMoveId = moveEndId - 1;
-						rookMoveSquare = document.querySelector("[squareId='" + rookMoveId + "']");
-						rookMoveSquare.append(rookPiece);
-					}
-					else if((moveStartId - moveEndId) === 2)
-					{
-						rookPiece = document.querySelector("[pieceId='" + 0 + "']");
-						rookMoveId = moveEndId + 1;
-						rookMoveSquare = document.querySelector("[squareId='" + rookMoveId + "']");
-						rookMoveSquare.append(rookPiece);
-					}
-				}
-				if(moveEndSquare.hasAttribute("enPassantWhite") && (moveStartPiece.id.includes("Pawn")))
-				{
-					let capturedId = Number(moveEndSquare.getAttribute("id")) + moveUp;
-					let capturedSquare = document.querySelector("[squareId='" + capturedId + "']");
-					moveEndSquare.append(moveStartPiece);
-					capturedSquare.children[0].remove();
-				}
-				else
-				{
-					if(moveStartPiece.id.includes("Pawn") && ((moveDown * 2) === Math.abs(moveStartId - moveEndId)))
-					{
-						enPassantSquare = document.querySelector("[squareId='" + (moveEndId + moveUp) + "']");
-						enPassantSquare.setAttribute("enPassantBlack", 0);
-					}
-					moveEndSquare.append(moveStartPiece);
-				}
-			}
-			else
-			{
-				return;
-			}
-		}
-	}
-	
-	changeColorTurn();
-	progressEnPassant();
-	clearDefended();
-
-	let whiteKingSquareId = Number(document.querySelector("[pieceId='" + 28 + "']").parentNode.getAttribute("squareId"));
-	let blackKingSquareId = Number(document.querySelector("[pieceId='" + 4 + "']").parentNode.getAttribute("squareId"));
-
-	allLegalMovesWhite = [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]];
-	allLegalMovesBlack = [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]];
-	populateDefaultKingMoves(whiteKingSquareId, true);
-	populateDefaultKingMoves(blackKingSquareId, false);
-	populateAllLegalMovesWhite();
-	populateAllLegalMovesBlack();
-	populateAllLegalMovesKings();
-	
-	if(colorTurn === "white")
-	{
-		if(isUnderAttack(whiteKingSquareId, true))
-		{
-			handleCheck(whiteKingSquareId);
 		}
 	}
 	else
 	{
-		if(isUnderAttack(blackKingSquareId, false))
-		{
-			handleCheck(blackKingSquareId);
-		}
+		
 	}
 }
 
