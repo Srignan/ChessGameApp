@@ -87,7 +87,7 @@ const IndexComputer = () => {
               src="/imgchessboard@2x.png"
             />
             <button
-              className={styles.buttonplay}
+              className={`${styles.buttonplay} ${styles.grow}`}
               id="heroButtonLogin"
               onClick={openPopupLoginLarge}
             >
