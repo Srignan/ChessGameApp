@@ -5,7 +5,7 @@ import FriendSearchComputer from './FriendSearchComputer';
 import FriendSearchTablet from './FriendSearchTablet';
 import FriendSearchMobile from './FriendSearchMobile';
 
-class Index extends React.Component {
+class FriendSearch extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
