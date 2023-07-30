@@ -5,7 +5,7 @@ import GameComputer from './GameComputer';
 import GameTablet from './GameTablet';
 import GameMobile from './GameMobile';
 
-class Index extends React.Component {
+class Game extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
