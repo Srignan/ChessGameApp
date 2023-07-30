@@ -37,8 +37,8 @@ const blackKnight = '<div class=' + styles.piece + ' id="blackKnight"><?xml vers
 const blackPawn = '<div class=' + styles.piece + ' id="blackPawn"><?xml version="1.0" encoding="UTF-8" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg xmlns="http://www.w3.org/2000/svg" version="1.1"><path d="m 22.5,9 c -2.21,0 -4,1.79 -4,4 0,0.89 0.29,1.71 0.78,2.38 C 17.33,16.5 16,18.59 16,21 c 0,2.03 0.94,3.84 2.41,5.03 C 15.41,27.09 11,31.58 11,39.5 H 34 C 34,31.58 29.59,27.09 26.59,26.03 28.06,24.84 29,23.03 29,21 29,18.59 27.67,16.5 25.72,15.38 26.21,14.71 26.5,13.89 26.5,13 c 0,-2.21 -1.79,-4 -4,-4 z" style="opacity:1; fill:#000000; fill-opacity:1; fill-rule:nonzero; stroke:#000000; stroke-width:1.5; stroke-linecap:round; stroke-linejoin:miter; stroke-miterlimit:4; stroke-dasharray:none; stroke-opacity:1;"/></svg></div>';
 
 //ui
-const circleNoPiece = '<svg xmlns="http://www.w3.org/2000/svg"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"/></svg>';
-const circlePiece = '<svg fill="#000000" height="800px" width="800px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 300 300" xml:space="preserve"><path d="M150,0C67.29,0,0,67.29,0,150s67.29,150,150,150s150-67.29,150-150S232.71,0,150,0z M150,270c-66.169,0-120-53.832-120-120 S83.831,30,150,30s120,53.832,120,120S216.168,270,150,270z"/></svg>';
+const circleNoPiece = '<svg class=' + styles.svgCircleNoPiece + ' xmlns="http://www.w3.org/2000/svg"><path class=' + styles.svgPathUiElement + ' d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"/></svg>';
+const circlePiece = '<svg class=' + styles.svgCirclePiece + ' fill="#000000" height="800px" width="800px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 300 300" xml:space="preserve"><path class=' + styles.svgPathUiElement + ' d="M150,0C67.29,0,0,67.29,0,150s67.29,150,150,150s150-67.29,150-150S232.71,0,150,0z M150,270c-66.169,0-120-53.832-120-120 S83.831,30,150,30s120,53.832,120,120S216.168,270,150,270z"/></svg>';
 
 var boardMatrix = 
 [
@@ -2053,11 +2053,8 @@ function showLegalMoves()
 		if(square.children[0])
 		{
 			const svgDiv = document.createElement("div");
-			svgDiv.className = styles.svgCirclePiece;
 			svgDiv.id = "circlePiece";
 			svgDiv.innerHTML = circlePiece;
-			svgDiv.children[0].className = styles.svgPathUiElement;
-			svgDiv.children[0].children[0].className = styles.svgPathUiElement;
 			square.append(svgDiv);
 			let svg = square.children[1].children[0];
 			svg.setAttribute("viewBox", "0 0 300 300");
@@ -2065,11 +2062,8 @@ function showLegalMoves()
 		else
 		{
 			const svgDiv = document.createElement("div");
-			svgDiv.className = styles.svgCircleNoPiece;
 			svgDiv.id = "circleNoPiece";
 			svgDiv.innerHTML = circleNoPiece;
-			svgDiv.children[0].className = styles.svgPathUiElement;
-			svgDiv.children[0].children[0].className = styles.svgPathUiElement;
 			square.append(svgDiv);
 			let svg = square.children[0].children[0];
 			svg.setAttribute("viewBox", "8 8 496 496");
