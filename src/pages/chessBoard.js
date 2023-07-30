@@ -477,7 +477,7 @@ function handlePinnedPieces(kingSquareId)
 	endSquare = document.querySelector("[squareId='" + endId + "']");
 	rank = Math.floor(endId / numRanks);
 	file = (endId % numFiles);
-	while(endId >== 0)
+	while(endId >= 0)
 	{
 		if((startRank === 0) || (startFile === 0))
 		{
@@ -501,11 +501,11 @@ function handlePinnedPieces(kingSquareId)
 	endId += moveUpLeft;
 	rank = Math.floor(endId / numRanks);
 	file = (endId % numFiles);
-	if(endId >== 0)
+	if(endId >= 0)
 	{
 		endSquare = document.querySelector("[squareId='" + endId + "']");
 	}
-	while(endId >== 0)
+	while(endId >= 0)
 	{
 		if((startRank === 0) || (startFile === 0))
 		{
@@ -542,7 +542,7 @@ function handlePinnedPieces(kingSquareId)
 	// Move up
 	endId = kingSquareId + moveUp;
 	endSquare = document.querySelector("[squareId='" + endId + "']");
-	while(endId >== 0)
+	while(endId >= 0)
 	{
 		if(endSquare.children[0])
 		{
@@ -553,11 +553,11 @@ function handlePinnedPieces(kingSquareId)
 		endSquare = document.querySelector("[squareId='" + endId + "']");
 	}
 	endId += moveUp;
-	if(endId >== 0)
+	if(endId >= 0)
 	{
 		endSquare = document.querySelector("[squareId='" + endId + "']");
 	}
-	while(endId >== 0)
+	while(endId >= 0)
 	{
 		if(endSquare.children[0])
 		{
@@ -586,7 +586,7 @@ function handlePinnedPieces(kingSquareId)
 	endSquare = document.querySelector("[squareId='" + endId + "']");
 	rank = Math.floor(endId / numRanks);
 	file = (endId % numFiles);
-	while(endId >== 0)
+	while(endId >= 0)
 	{
 		if((startRank === 0) || (startFile === 7))
 		{
@@ -610,11 +610,11 @@ function handlePinnedPieces(kingSquareId)
 	endId += moveUpRight;
 	rank = Math.floor(endId / numRanks);
 	file = (endId % numFiles);
-	if(endId >== 0)
+	if(endId >= 0)
 	{
 		endSquare = document.querySelector("[squareId='" + endId + "']");
 	}
-	while(endId >== 0)
+	while(endId >= 0)
 	{
 		if((startRank === 0) || (startFile === 7))
 		{
@@ -745,7 +745,7 @@ function handlePinnedPieces(kingSquareId)
 	endSquare = document.querySelector("[squareId='" + endId + "']");
 	rank = Math.floor(endId / numRanks);
 	file = (endId % numFiles);
-	while(endId <== 63)
+	while(endId <= 63)
 	{
 		if((startRank === 7) || (startFile === 0))
 		{
@@ -769,11 +769,11 @@ function handlePinnedPieces(kingSquareId)
 	endId += moveDownLeft;
 	rank = Math.floor(endId / numRanks);
 	file = (endId % numFiles);
-	if(endId <== 63)
+	if(endId <= 63)
 	{
 		endSquare = document.querySelector("[squareId='" + endId + "']");
 	}
-	while(endId <== 63)
+	while(endId <= 63)
 	{
 		if((startRank === 7) || (startFile === 0))
 		{
@@ -810,7 +810,7 @@ function handlePinnedPieces(kingSquareId)
 	// Move down
 	endId = kingSquareId + moveDown;
 	endSquare = document.querySelector("[squareId='" + endId + "']");
-	while(endId <== 63)
+	while(endId <= 63)
 	{
 		if(endSquare.children[0])
 		{
@@ -821,11 +821,11 @@ function handlePinnedPieces(kingSquareId)
 		endSquare = document.querySelector("[squareId='" + endId + "']");
 	}
 	endId += moveDown;
-	if(endId <== 63)
+	if(endId <= 63)
 	{
 		endSquare = document.querySelector("[squareId='" + endId + "']");
 	}
-	while(endId <== 63)
+	while(endId <= 63)
 	{
 		if(endSquare.children[0])
 		{
@@ -854,7 +854,7 @@ function handlePinnedPieces(kingSquareId)
 	endSquare = document.querySelector("[squareId='" + endId + "']");
 	rank = Math.floor(endId / numRanks);
 	file = (endId % numFiles);
-	while(endId <== 63)
+	while(endId <= 63)
 	{
 		if((startRank === 7) || (startFile === 7))
 		{
@@ -878,11 +878,11 @@ function handlePinnedPieces(kingSquareId)
 	endId += moveDownRight;
 	rank = Math.floor(endId / numRanks);
 	file = (endId % numFiles);
-	if(endId <== 63)
+	if(endId <= 63)
 	{
 		endSquare = document.querySelector("[squareId='" + endId + "']");
 	}
-	while(endId <== 63)
+	while(endId <= 63)
 	{
 		if((startRank === 7) || (startFile === 7))
 		{
