@@ -5,7 +5,7 @@ import ResetPasswordComputer from './ResetPasswordComputer';
 import ResetPasswordTablet from './ResetPasswordTablet';
 import ResetPasswordMobile from './ResetPasswordMobile';
 
-class Index extends React.Component {
+class ResetPassword extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
