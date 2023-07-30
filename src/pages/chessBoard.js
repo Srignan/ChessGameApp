@@ -1873,7 +1873,7 @@ function playIfValidMove()
 						boardMatrix[Math.floor(moveEndId / numRanks)][moveEndId % numFiles] = moveStartPiece;
 					}
 				}
-				if(moveEndSquare.hasAttribute("enPassantBlack") && (moveStartPiece.id.includes("Pawn")))
+				else if(moveEndSquare.hasAttribute("enPassantBlack") && (moveStartPiece.id.includes("Pawn")))
 				{
 					let capturedId = Number(moveEndSquare.getAttribute("squareId")) + moveDown;
 					let capturedSquare = document.querySelector("[squareId='" + capturedId + "']");
@@ -1928,7 +1928,7 @@ function playIfValidMove()
 						boardMatrix[Math.floor(moveEndId / numRanks)][moveEndId % numFiles] = moveStartPiece;
 					}
 				}
-				if(moveEndSquare.hasAttribute("enPassantWhite") && (moveStartPiece.id.includes("Pawn")))
+				else if(moveEndSquare.hasAttribute("enPassantWhite") && (moveStartPiece.id.includes("Pawn")))
 				{
 					let capturedId = Number(moveEndSquare.getAttribute("id")) + moveUp;
 					let capturedSquare = document.querySelector("[squareId='" + capturedId + "']");
