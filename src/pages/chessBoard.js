@@ -2054,6 +2054,7 @@ function showLegalMoves()
 		{
 			const svgDiv = document.createElement("div");
 			svgDiv.id = "circlePiece";
+			svgDiv.className = styles.uiElement;
 			svgDiv.innerHTML = circlePiece;
 			square.append(svgDiv);
 			let svg = square.children[1].children[0];
@@ -2073,12 +2074,7 @@ function showLegalMoves()
 
 function hideLegalMoves()
 {
-	let uiElements = document.querySelectorAll("[class='" + styles.svgCircleNoPiece + "']");
-	uiElements.forEach((uiElement) =>
-	{
-		uiElement.remove();
-	});
-	uiElements = document.querySelectorAll("[class='" + styles.svgCircleNoPiece + "']");
+	let uiElements = document.querySelectorAll("[class='" + styles.uiElement + "']");
 	uiElements.forEach((uiElement) =>
 	{
 		uiElement.remove();
