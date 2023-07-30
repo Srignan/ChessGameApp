@@ -2064,6 +2064,7 @@ function showLegalMoves()
 		{
 			const svgDiv = document.createElement("div");
 			svgDiv.id = "circleNoPiece";
+			svgDiv.className = styles.uiElement;
 			svgDiv.innerHTML = circleNoPiece;
 			square.append(svgDiv);
 			let svg = square.children[0].children[0];
