@@ -126,52 +126,6 @@ useEffect(() => {
     createBoard();
   }, []);
 
-dragStart(e)
-{
-	moveStartId = Number(e.target.parentNode.getAttribute("squareId"));
-	moveStartPiece = e.target;
-	
-	let pieceId = Number(e.target.getAttribute("pieceId"));
-	if(pieceId >= 16)
-	{
-		legalMoves = allLegalMovesWhite[pieceId - 16];
-	}
-	else
-	{
-		legalMoves = allLegalMovesBlack[pieceId];
-	}
-	if(((colorTurn === "white") && (moveStartPiece.id.includes("white"))) || ((colorTurn === "black") && (moveStartPiece.id.includes("black"))))
-	{
-		showLegalMoves();
-	}
-}
-
-dragOver(e)
-{
-	e.preventDefault();
-	/*e = e || window.event;
-	let dragX = e.pageX + 20;
-	let dragY = e.pageY + 20;
-	console.log("X: "+dragX+" Y: "+dragY);*/
-}
-
-dragDrop(e)
-{
-	e.stopPropagation();
-	if(e.target.children[0])
-	{
-		moveEndId = Number(e.target.parentNode.getAttribute("squareId"));
-		moveEndSquare = e.target.parentNode;
-	}
-	else
-	{
-		moveEndId = Number(e.target.getAttribute("squareId"));
-		moveEndSquare = e.target;
-	}
-	hideLegalMoves();
-	playIfValidMove();
-}
-
   return (
     <>
       <div className={styles.gamecomputer}>
