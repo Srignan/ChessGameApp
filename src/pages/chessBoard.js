@@ -2408,7 +2408,14 @@ function playIfValidMove()
 		allLegalMovesBlack = [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]];
 		populateDefaultKingMoves(whiteKingSquareId, true);
 		populateDefaultKingMoves(blackKingSquareId, false);
-		handlePinnedPieces(kingSquareId);
+		if(colorTurn === "white")
+		{
+			handlePinnedPieces(whiteKingSquareId);
+		}
+		else
+		{
+			handlePinnedPieces(blackKingSquareId);
+		}
 		populateAllLegalMovesWhite();
 		populateAllLegalMovesBlack();
 		populateAllLegalMovesKings();
