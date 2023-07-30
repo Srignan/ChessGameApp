@@ -1814,8 +1814,6 @@ function playIfValidMove()
 				}
 				moveEndSquare.append(moveStartPiece);
 				moveEndSquare.children[0].remove();
-				boardMatrix[Math.floor(moveStartId / numRanks)][moveStartId % numFiles] = '';
-				boardMatrix[Math.floor(moveEndId / numRanks)][moveEndId % numFiles] = moveStartPiece;
 			}
 			else
 			{
@@ -1832,8 +1830,6 @@ function playIfValidMove()
 				}
 				moveEndSquare.append(moveStartPiece);
 				moveEndSquare.children[0].remove();
-				boardMatrix[Math.floor(moveStartId / numRanks)][moveStartId % numFiles] = '';
-				boardMatrix[Math.floor(moveEndId / numRanks)][moveEndId % numFiles] = moveStartPiece;
 			}
 			else
 			{
@@ -1860,8 +1856,6 @@ function playIfValidMove()
 						rookMoveId = moveEndId - 1;
 						rookMoveSquare = document.querySelector("[squareId='" + rookMoveId + "']");
 						rookMoveSquare.append(rookPiece);
-						boardMatrix[Math.floor(moveStartId / numRanks)][moveStartId % numFiles] = '';
-						boardMatrix[Math.floor(moveEndId / numRanks)][moveEndId % numFiles] = moveStartPiece;
 					}
 					else if((moveStartId - moveEndId) === 2)
 					{
@@ -1869,8 +1863,6 @@ function playIfValidMove()
 						rookMoveId = moveEndId + 1;
 						rookMoveSquare = document.querySelector("[squareId='" + rookMoveId + "']");
 						rookMoveSquare.append(rookPiece);
-						boardMatrix[Math.floor(moveStartId / numRanks)][moveStartId % numFiles] = '';
-						boardMatrix[Math.floor(moveEndId / numRanks)][moveEndId % numFiles] = moveStartPiece;
 					}
 				}
 				else if(moveEndSquare.hasAttribute("enPassantBlack") && (moveStartPiece.id.includes("Pawn")))
@@ -1879,8 +1871,6 @@ function playIfValidMove()
 					let capturedSquare = document.querySelector("[squareId='" + capturedId + "']");
 					moveEndSquare.append(moveStartPiece);
 					capturedSquare.children[0].remove();
-					boardMatrix[Math.floor(moveStartId / numRanks)][moveStartId % numFiles] = '';
-					boardMatrix[Math.floor(moveEndId / numRanks)][moveEndId % numFiles] = moveStartPiece;
 				}
 				else
 				{
@@ -1890,8 +1880,6 @@ function playIfValidMove()
 						enPassantSquare.setAttribute("enPassantWhite", 0);
 					}
 					moveEndSquare.append(moveStartPiece);
-					boardMatrix[Math.floor(moveStartId / numRanks)][moveStartId % numFiles] = '';
-					boardMatrix[Math.floor(moveEndId / numRanks)][moveEndId % numFiles] = moveStartPiece;
 				}
 			}
 			else
@@ -1915,8 +1903,6 @@ function playIfValidMove()
 						rookMoveId = moveEndId - 1;
 						rookMoveSquare = document.querySelector("[squareId='" + rookMoveId + "']");
 						rookMoveSquare.append(rookPiece);
-						boardMatrix[Math.floor(moveStartId / numRanks)][moveStartId % numFiles] = '';
-						boardMatrix[Math.floor(moveEndId / numRanks)][moveEndId % numFiles] = moveStartPiece;
 					}
 					else if((moveStartId - moveEndId) === 2)
 					{
@@ -1924,8 +1910,6 @@ function playIfValidMove()
 						rookMoveId = moveEndId + 1;
 						rookMoveSquare = document.querySelector("[squareId='" + rookMoveId + "']");
 						rookMoveSquare.append(rookPiece);
-						boardMatrix[Math.floor(moveStartId / numRanks)][moveStartId % numFiles] = '';
-						boardMatrix[Math.floor(moveEndId / numRanks)][moveEndId % numFiles] = moveStartPiece;
 					}
 				}
 				else if(moveEndSquare.hasAttribute("enPassantWhite") && (moveStartPiece.id.includes("Pawn")))
@@ -1934,8 +1918,6 @@ function playIfValidMove()
 					let capturedSquare = document.querySelector("[squareId='" + capturedId + "']");
 					moveEndSquare.append(moveStartPiece);
 					capturedSquare.children[0].remove();
-					boardMatrix[Math.floor(moveStartId / numRanks)][moveStartId % numFiles] = '';
-					boardMatrix[Math.floor(moveEndId / numRanks)][moveEndId % numFiles] = moveStartPiece;
 				}
 				else
 				{
@@ -1945,8 +1927,6 @@ function playIfValidMove()
 						enPassantSquare.setAttribute("enPassantBlack", 0);
 					}
 					moveEndSquare.append(moveStartPiece);
-					boardMatrix[Math.floor(moveStartId / numRanks)][moveStartId % numFiles] = '';
-					boardMatrix[Math.floor(moveEndId / numRanks)][moveEndId % numFiles] = moveStartPiece;
 				}
 			}
 			else
