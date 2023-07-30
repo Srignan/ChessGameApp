@@ -1,4 +1,5 @@
 import { useState, useCallback } from "react";
+import React, { useEffect } from 'react';
 import PopupLoseLarge from "../components/PopupLoseLarge";
 import PortalPopup from "../components/PortalPopup";
 import PopupLeaveLarge from "../components/PopupLeaveLarge";
