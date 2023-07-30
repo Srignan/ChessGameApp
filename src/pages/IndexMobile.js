@@ -220,7 +220,7 @@ const IndexMobile = () => {
               src="/star-2.svg"
             />
           </div>
-          <div className={styles.content4texttname2}>Another Person</div>
+          <div className={styles.content4texttname2}>Business Major</div>
           <img
             className={styles.content4imgtest2Icon}
             alt=""
@@ -256,7 +256,7 @@ const IndexMobile = () => {
               src="/star-1.svg"
             />
           </div>
-          <div className={styles.content4texttname1}>Cool Name</div>
+          <div className={styles.content4texttname1}>CS Major</div>
           <img
             className={styles.content4imgtest1Icon}
             alt=""
