@@ -60,13 +60,13 @@ function createBoard()
 		const square = document.createElement("div");
 		square.classList.add(styles.square);
 		square.innerHTML = startingPiece;
+		square.addEventListener("dragstart", dragStart);
+		square.addEventListener("dragover", dragOver);
+		square.addEventListener("drop", dragDrop);
 		if(square.children[0])
 		{
 			let svgDiv = square.children[0];
 			svgDiv.draggable = true;
-			svgDiv.addEventListener("dragstart", dragStart);
-			svgDiv.addEventListener("dragover", dragOver);
-			svgDiv.addEventListener("drop", dragDrop);
 			
 			let svg = square.children[0].children[0];
 			svg.classList.add(styles.svgPiece);
@@ -2164,13 +2164,5 @@ function dragDrop(e)
 {
 	createBoard();
 });*/
-
-let squares = document.querySelectorAll("#chessBoard " + styles.square)
-squares.forEach(square =>
-{
-	square.addEventListener("dragstart", dragStart);
-	square.addEventListener("dragover", dragOver);
-	square.addEventListener("drop", dragDrop);
-});
 
 export default createBoard;
