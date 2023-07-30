@@ -5,7 +5,7 @@ import ContactUsComputer from './ContactUsComputer';
 import ContactUsTablet from './ContactUsTablet';
 import ContactUsMobile from './ContactUsMobile';
 
-class Index extends React.Component {
+class ContactUs extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
