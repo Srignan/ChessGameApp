@@ -1,10 +1,10 @@
 
   # Chess
 
-  Note: Please ensure you have installed <code><a href="https://nodejs.org/en/download/">nodejs</a></code>
+  Project is linked to Heroku. To deploy, login to our app, go to Deploy, click the GitHub icon, and manually deploy.
 
-  To preview and run the project on your device:
-  1) Open project folder in <a href="https://code.visualstudio.com/download">Visual Studio Code</a>
-  2) In the terminal, run `npm install`
-  3) Run `npm start` to view project in browser
-  
+  If you need to run this on your own computer:
+  1) Download the project folder as a zip and extract it.
+  2) Either navigate to the folder with command prompt or open the project folder in VS Code.
+  2) In the command prompt or VS Code's terminal, run `npm install`.
+  3) Once the modules are installed, run `npm start` to automatically launch a localhost server of the website. This opens automatically in the browser. 
