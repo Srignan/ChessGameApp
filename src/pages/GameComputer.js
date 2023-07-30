@@ -5,6 +5,8 @@ import PopupLeaveLarge from "../components/PopupLeaveLarge";
 import SideBarDropGamesPage from "../components/SideBarDropGamesPage";
 import PortalDrawer from "../components/PortalDrawer";
 import styles from "./GameComputer.module.css";
+import createBoard from './chessBoard.js';
+
 const GameComputer = () => {
   const [isPopupLoseLargeOpen, setPopupLoseLargeOpen] = useState(false);
   const [isPopupLeaveLargeOpen, setPopupLeaveLargeOpen] = useState(false);
@@ -82,6 +84,10 @@ const GameComputer = () => {
 
   const closePopupLeaveLarge3 = useCallback(() => {
     setPopupLeaveLarge3Open(false);
+  }, []);
+
+useEffect(() => {
+    createBoard();
   }, []);
 
   return (
