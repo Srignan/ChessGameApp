@@ -2053,7 +2053,7 @@ function showLegalMoves()
 		if(square.children[0])
 		{
 			const svgDiv = document.createElement("div");
-			svgDiv.className = styles.uiElement;
+			svgDiv.className = styles.svgCirclePiece;
 			svgDiv.id = "circlePiece";
 			svgDiv.innerHTML = circlePiece;
 			square.append(svgDiv);
@@ -2063,7 +2063,7 @@ function showLegalMoves()
 		else
 		{
 			const svgDiv = document.createElement("div");
-			svgDiv.className = styles.uiElement;
+			svgDiv.className = styles.svgCircleNoPiece;
 			svgDiv.id = "circleNoPiece";
 			svgDiv.innerHTML = circleNoPiece;
 			square.append(svgDiv);
