@@ -2054,10 +2054,10 @@ function showLegalMoves()
 		{
 			const svgDiv = document.createElement("div");
 			svgDiv.className = styles.svgCirclePiece;
-			svgDiv.children[0].className = styles.svgPathUiElement;
-			svgDiv.children[0].children[0].className = styles.svgPathUiElement;
 			svgDiv.id = "circlePiece";
 			svgDiv.innerHTML = circlePiece;
+			svgDiv.children[0].className = styles.svgPathUiElement;
+			svgDiv.children[0].children[0].className = styles.svgPathUiElement;
 			square.append(svgDiv);
 			let svg = square.children[1].children[0];
 			svg.setAttribute("viewBox", "0 0 300 300");
@@ -2066,10 +2066,10 @@ function showLegalMoves()
 		{
 			const svgDiv = document.createElement("div");
 			svgDiv.className = styles.svgCircleNoPiece;
-			svgDiv.children[0].className = styles.svgPathUiElement;
-			svgDiv.children[0].children[0].className = styles.svgPathUiElement;
 			svgDiv.id = "circleNoPiece";
 			svgDiv.innerHTML = circleNoPiece;
+			svgDiv.children[0].className = styles.svgPathUiElement;
+			svgDiv.children[0].children[0].className = styles.svgPathUiElement;
 			square.append(svgDiv);
 			let svg = square.children[0].children[0];
 			svg.setAttribute("viewBox", "8 8 496 496");
