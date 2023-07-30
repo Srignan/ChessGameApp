@@ -179,7 +179,7 @@ function populateAllLegalMovesWhite()
 	{
 		moveStartId = Number(piece.parentNode.getAttribute("squareId"));
 		pieceId = Number(piece.getAttribute("pieceId"));
-		if(!(pieceId === 28))
+		if(!(pieceId === 28) && !(piece.getAttribute("isPinned") === 1))
 		{
 			moveStartPiece = piece;
 			findLegalMoves();
@@ -199,7 +199,7 @@ function populateAllLegalMovesBlack()
 	{
 		moveStartId = Number(piece.parentNode.getAttribute("squareId"));
 		pieceId = Number(piece.getAttribute("pieceId"));
-		if(!(pieceId === 4))
+		if(!(pieceId === 4) && !(piece.getAttribute("isPinned") === 1))
 		{
 			moveStartPiece = piece;
 			findLegalMoves();
@@ -457,6 +457,463 @@ function populateDefaultKingMoves(kingId, isWhite)
 				}
 			}
 		}
+	}
+}
+
+function handlePinnedPieces(kingSquareId)
+{
+	let kingSquare = document.querySelector("[squareId='" + kingSquareId + "']");
+	let endId;
+	let endSquare;
+	let piece;
+	let pieceSquareId;
+	let startRank = Math.floor(kingSquareId / numRanks);
+	let startFile = kingSquareId % numFiles;
+	let rank;
+	let file;
+
+	// Move up left
+	endId = kingSquareId + moveUpLeft;
+	endSquare = document.querySelector("[squareId='" + endId + "']");
+	rank = Math.floor(endId / numRanks);
+	file = (endId % numFiles);
+	while(endId >== 0)
+	{
+		if((startRank === 0) || (startFile === 0))
+		{
+			break;
+		}
+		if(endSquare.children[0])
+		{
+			piece = endSquare.children[0];
+			break;
+		}
+		if((rank === 0) || (file === 0))
+		{
+			endId = 80;
+			break;
+		}
+		endId += moveUpLeft;
+		endSquare = document.querySelector("[squareId='" + endId + "']");
+		rank = Math.floor(endId / numRanks);
+		file = (endId % numFiles);
+	}
+	endId += moveUpLeft;
+	rank = Math.floor(endId / numRanks);
+	file = (endId % numFiles);
+	if(endId >== 0)
+	{
+		endSquare = document.querySelector("[squareId='" + endId + "']");
+	}
+	while(endId >== 0)
+	{
+		if((startRank === 0) || (startFile === 0))
+		{
+			break;
+		}
+		if(endSquare.children[0])
+		{
+			if(kingSquare.children[0].id.includes("white"))
+			{
+				if(endSquare.children[0].id.includes("blackQueen") || endSquare.children[0].id.includes("blackBishop"))
+				{
+					piece.setAttribute("isPinned", '1')
+				}
+			}
+			else
+			{
+				if(endSquare.children[0].id.includes("whiteQueen") || endSquare.children[0].id.includes("whiteBishop"))
+				{
+					piece.setAttribute("isPinned", '1')
+				}
+			}
+			break;
+		}
+		if((rank === 0) || (file === 0))
+		{
+			break;
+		}
+		endId += moveUpLeft;
+		endSquare = document.querySelector("[squareId='" + endId + "']");
+		rank = Math.floor(endId / numRanks);
+		file = (endId % numFiles);
+	}
+	
+	// Move up
+	endId = kingSquareId + moveUp;
+	endSquare = document.querySelector("[squareId='" + endId + "']");
+	while(endId >== 0)
+	{
+		if(endSquare.children[0])
+		{
+			piece = endSquare.children[0];
+			break;
+		}
+		endId += moveUp;
+		endSquare = document.querySelector("[squareId='" + endId + "']");
+	}
+	endId += moveUp;
+	if(endId >== 0)
+	{
+		endSquare = document.querySelector("[squareId='" + endId + "']");
+	}
+	while(endId >== 0)
+	{
+		if(endSquare.children[0])
+		{
+			if(kingSquare.children[0].id.includes("white"))
+			{
+				if(endSquare.children[0].id.includes("blackQueen") || endSquare.children[0].id.includes("blackRook"))
+				{
+					piece.setAttribute("isPinned", '1')
+				}
+			}
+			else
+			{
+				if(endSquare.children[0].id.includes("whiteQueen") || endSquare.children[0].id.includes("whiteRook"))
+				{
+					piece.setAttribute("isPinned", '1')
+				}
+			}
+			break;
+		}
+		endId += moveUp;
+		endSquare = document.querySelector("[squareId='" + endId + "']");
+	}
+
+	// Move up right
+	endId = kingSquareId + moveUpRight;
+	endSquare = document.querySelector("[squareId='" + endId + "']");
+	rank = Math.floor(endId / numRanks);
+	file = (endId % numFiles);
+	while(endId >== 0)
+	{
+		if((startRank === 0) || (startFile === 7))
+		{
+			break;
+		}
+		if(endSquare.children[0])
+		{
+			piece = endSquare.children[0];
+			break;
+		}
+		if((rank === 0) || (file === 7))
+		{
+			endId = 80;
+			break;
+		}
+		endId += moveUpRight;
+		endSquare = document.querySelector("[squareId='" + endId + "']");
+		rank = Math.floor(endId / numRanks);
+		file = (endId % numFiles);
+	}
+	endId += moveUpRight;
+	rank = Math.floor(endId / numRanks);
+	file = (endId % numFiles);
+	if(endId >== 0)
+	{
+		endSquare = document.querySelector("[squareId='" + endId + "']");
+	}
+	while(endId >== 0)
+	{
+		if((startRank === 0) || (startFile === 7))
+		{
+			break;
+		}
+		if(endSquare.children[0])
+		{
+			if(kingSquare.children[0].id.includes("white"))
+			{
+				if(endSquare.children[0].id.includes("blackQueen") || endSquare.children[0].id.includes("blackBishop"))
+				{
+					piece.setAttribute("isPinned", '1')
+				}
+			}
+			else
+			{
+				if(endSquare.children[0].id.includes("whiteQueen") || endSquare.children[0].id.includes("whiteBishop"))
+				{
+					piece.setAttribute("isPinned", '1')
+				}
+			}
+			break;
+		}
+		if((rank === 0) || (file === 7))
+		{
+			break;
+		}
+		endId += moveUpRight;
+		endSquare = document.querySelector("[squareId='" + endId + "']");
+		rank = Math.floor(endId / numRanks);
+		file = (endId % numFiles);
+	}
+
+	// Move left
+	endId = kingSquareId + moveLeft;
+	endSquare = document.querySelector("[squareId='" + endId + "']");
+	rank = Math.floor(endId / numRanks);
+	while(startRank === rank)
+	{
+		if(endSquare.children[0])
+		{
+			piece = endSquare.children[0];
+			break;
+		}
+		endId += moveLeft;
+		endSquare = document.querySelector("[squareId='" + endId + "']");
+		rank = Math.floor(endId / numRanks);
+	}
+	endId += moveLeft;
+	rank = Math.floor(endId / numRanks);
+	if(startRank === rank)
+	{
+		endSquare = document.querySelector("[squareId='" + endId + "']");
+	}
+	while(startRank === rank)
+	{
+		if(endSquare.children[0])
+		{
+			if(kingSquare.children[0].id.includes("white"))
+			{
+				if(endSquare.children[0].id.includes("blackQueen") || endSquare.children[0].id.includes("blackRook"))
+				{
+					piece.setAttribute("isPinned", '1')
+				}
+			}
+			else
+			{
+				if(endSquare.children[0].id.includes("whiteQueen") || endSquare.children[0].id.includes("whiteRook"))
+				{
+					piece.setAttribute("isPinned", '1')
+				}
+			}
+			break;
+		}
+		endId += moveLeft;
+		endSquare = document.querySelector("[squareId='" + endId + "']");
+		rank = Math.floor(endId / numRanks);
+	}
+
+	// Move right
+	endId = kingSquareId + moveRight;
+	endSquare = document.querySelector("[squareId='" + endId + "']");
+	rank = Math.floor(endId / numRanks);
+	while(startRank === rank)
+	{
+		if(endSquare.children[0])
+		{
+			piece = endSquare.children[0];
+			break;
+		}
+		endId += moveRight;
+		endSquare = document.querySelector("[squareId='" + endId + "']");
+		rank = Math.floor(endId / numRanks);
+	}
+	endId += moveRight;
+	rank = Math.floor(endId / numRanks);
+	if(startRank === rank)
+	{
+		endSquare = document.querySelector("[squareId='" + endId + "']");
+	}
+	while(startRank === rank)
+	{
+		if(endSquare.children[0])
+		{
+			if(kingSquare.children[0].id.includes("white"))
+			{
+				if(endSquare.children[0].id.includes("blackQueen") || endSquare.children[0].id.includes("blackRook"))
+				{
+					piece.setAttribute("isPinned", '1')
+				}
+			}
+			else
+			{
+				if(endSquare.children[0].id.includes("whiteQueen") || endSquare.children[0].id.includes("whiteRook"))
+				{
+					piece.setAttribute("isPinned", '1')
+				}
+			}
+			break;
+		}
+		endId += moveRight;
+		endSquare = document.querySelector("[squareId='" + endId + "']");
+		rank = Math.floor(endId / numRanks);
+	}
+
+	// Move down left
+	endId = kingSquareId + moveDownLeft;
+	endSquare = document.querySelector("[squareId='" + endId + "']");
+	rank = Math.floor(endId / numRanks);
+	file = (endId % numFiles);
+	while(endId <== 63)
+	{
+		if((startRank === 7) || (startFile === 0))
+		{
+			break;
+		}
+		if(endSquare.children[0])
+		{
+			piece = endSquare.children[0];
+			break;
+		}
+		if((rank === 7) || (file === 0))
+		{
+			endId = 80;
+			break;
+		}
+		endId += moveDownLeft;
+		endSquare = document.querySelector("[squareId='" + endId + "']");
+		rank = Math.floor(endId / numRanks);
+		file = (endId % numFiles);
+	}
+	endId += moveDownLeft;
+	rank = Math.floor(endId / numRanks);
+	file = (endId % numFiles);
+	if(endId <== 63)
+	{
+		endSquare = document.querySelector("[squareId='" + endId + "']");
+	}
+	while(endId <== 63)
+	{
+		if((startRank === 7) || (startFile === 0))
+		{
+			break;
+		}
+		if(endSquare.children[0])
+		{
+			if(kingSquare.children[0].id.includes("white"))
+			{
+				if(endSquare.children[0].id.includes("blackQueen") || endSquare.children[0].id.includes("blackBishop"))
+				{
+					piece.setAttribute("isPinned", '1')
+				}
+			}
+			else
+			{
+				if(endSquare.children[0].id.includes("whiteQueen") || endSquare.children[0].id.includes("whiteBishop"))
+				{
+					piece.setAttribute("isPinned", '1')
+				}
+			}
+			break;
+		}
+		if((rank === 7) || (file === 0))
+		{
+			break;
+		}
+		endId += moveDownLeft;
+		endSquare = document.querySelector("[squareId='" + endId + "']");
+		rank = Math.floor(endId / numRanks);
+		file = (endId % numFiles);
+	}
+
+	// Move down
+	endId = kingSquareId + moveDown;
+	endSquare = document.querySelector("[squareId='" + endId + "']");
+	while(endId <== 63)
+	{
+		if(endSquare.children[0])
+		{
+			piece = endSquare.children[0];
+			break;
+		}
+		endId += moveDown;
+		endSquare = document.querySelector("[squareId='" + endId + "']");
+	}
+	endId += moveDown;
+	if(endId <== 63)
+	{
+		endSquare = document.querySelector("[squareId='" + endId + "']");
+	}
+	while(endId <== 63)
+	{
+		if(endSquare.children[0])
+		{
+			if(kingSquare.children[0].id.includes("white"))
+			{
+				if(endSquare.children[0].id.includes("blackQueen") || endSquare.children[0].id.includes("blackRook"))
+				{
+					piece.setAttribute("isPinned", '1')
+				}
+			}
+			else
+			{
+				if(endSquare.children[0].id.includes("whiteQueen") || endSquare.children[0].id.includes("whiteRook"))
+				{
+					piece.setAttribute("isPinned", '1')
+				}
+			}
+			break;
+		}
+		endId += moveDown;
+		endSquare = document.querySelector("[squareId='" + endId + "']");
+	}
+	
+	// Move down right
+	endId = kingSquareId + moveDownRight;
+	endSquare = document.querySelector("[squareId='" + endId + "']");
+	rank = Math.floor(endId / numRanks);
+	file = (endId % numFiles);
+	while(endId <== 63)
+	{
+		if((startRank === 7) || (startFile === 7))
+		{
+			break;
+		}
+		if(endSquare.children[0])
+		{
+			piece = endSquare.children[0];
+			break;
+		}
+		if((rank === 7) || (file === 7))
+		{
+			endId = 80;
+			break;
+		}
+		endId += moveDownRight;
+		endSquare = document.querySelector("[squareId='" + endId + "']");
+		rank = Math.floor(endId / numRanks);
+		file = (endId % numFiles);
+	}
+	endId += moveDownRight;
+	rank = Math.floor(endId / numRanks);
+	file = (endId % numFiles);
+	if(endId <== 63)
+	{
+		endSquare = document.querySelector("[squareId='" + endId + "']");
+	}
+	while(endId <== 63)
+	{
+		if((startRank === 7) || (startFile === 7))
+		{
+			break;
+		}
+		if(endSquare.children[0])
+		{
+			if(kingSquare.children[0].id.includes("white"))
+			{
+				if(endSquare.children[0].id.includes("blackQueen") || endSquare.children[0].id.includes("blackBishop"))
+				{
+					piece.setAttribute("isPinned", '1')
+				}
+			}
+			else
+			{
+				if(endSquare.children[0].id.includes("whiteQueen") || endSquare.children[0].id.includes("whiteBishop"))
+				{
+					piece.setAttribute("isPinned", '1')
+				}
+			}
+			break;
+		}
+		if((rank === 7) || (file === 7))
+		{
+			break;
+		}
+		endId += moveDownRight;
+		endSquare = document.querySelector("[squareId='" + endId + "']");
+		rank = Math.floor(endId / numRanks);
+		file = (endId % numFiles);
 	}
 }
 
@@ -1951,9 +2408,13 @@ function playIfValidMove()
 		allLegalMovesBlack = [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]];
 		populateDefaultKingMoves(whiteKingSquareId, true);
 		populateDefaultKingMoves(blackKingSquareId, false);
+		handlePinnedPieces(kingSquareId);
 		populateAllLegalMovesWhite();
 		populateAllLegalMovesBlack();
 		populateAllLegalMovesKings();
+		clearPinned();
+		
+		
 		
 		if(colorTurn === "white")
 		{
@@ -1974,6 +2435,15 @@ function playIfValidMove()
 	{
 		
 	}
+}
+
+function clearPinned()
+{
+	let allPinned = document.querySelectorAll("[isPinned=1]");
+	allPinned.forEach((pinnedPiece) =>
+	{
+		pinnedPiece.removeAttribute("isPinned");
+	});
 }
 
 function clearDefended()
