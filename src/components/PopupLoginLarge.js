@@ -42,7 +42,7 @@ const PopupLoginLarge = ({ onClose }) => {
             <b className={styles.swapbuttonlogintext}>Login</b>
           </div>
           <button
-            className={styles.popupswapbuttonsignup}
+            className={`${styles.popupswapbuttonsignup} ${styles.grow}`}
             id="swapButtonSignUp"
             onClick={openPopupSignUpLarge}
           >
@@ -50,7 +50,7 @@ const PopupLoginLarge = ({ onClose }) => {
           </button>
         </div>
         <button
-          className={styles.popupimgclosebutton}
+          className={`${styles.popupimgclosebutton} ${styles.shrink}`}
           id="closeButton"
           onClick={onClose}
         />
