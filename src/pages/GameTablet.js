@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import styles from "./GameComputer.module.css";
 import createBoard from './chessBoard.js';
 import { useState, useCallback } from "react";
 import PopupLoseMedium from "../components/PopupLoseMedium";
