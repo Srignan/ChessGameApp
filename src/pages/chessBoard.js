@@ -2075,12 +2075,12 @@ function showLegalMoves()
 
 function hideLegalMoves()
 {
-	let uiElements = document.querySelectorAll(styles.svgCircleNoPiece);
+	let uiElements = document.querySelectorAll("[class='" + styles.svgCircleNoPiece + "']");
 	uiElements.forEach((uiElement) =>
 	{
 		uiElement.remove();
 	});
-	uiElements = document.querySelectorAll(styles.svgCirclePiece);
+	uiElements = document.querySelectorAll("[class='" + styles.svgCircleNoPiece + "']");
 	uiElements.forEach((uiElement) =>
 	{
 		uiElement.remove();
