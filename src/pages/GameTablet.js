@@ -1,3 +1,6 @@
+import React, { useEffect } from 'react';
+import styles from "./GameComputer.module.css";
+import createBoard from './chessBoard.js';
 import { useState, useCallback } from "react";
 import PopupLoseMedium from "../components/PopupLoseMedium";
 import PortalPopup from "../components/PortalPopup";
@@ -54,6 +57,10 @@ const GameTablet = () => {
     setPopupLeaveMedium1Open(false);
   }, []);
 
+  useEffect(() => {
+    createBoard();
+  }, []);
+
   return (
     <>
       <div className={styles.gametablet}>
@@ -75,10 +82,10 @@ const GameTablet = () => {
         </div>
         <div className={styles.content2Chess}>
           <div className={styles.content2divider} />
-          <div
-            className={styles.chessboardcontainer}
-            id="divChessboardContainer"
-          />
+          <div className={styles.chessboardcontainer} id="divChessboardContainer">
+              <div className={styles.chessBoard} id="chessBoard"></div>
+	            <script src="chessBoard.js"></script>
+          </div>
         </div>
         <div className={styles.content3Bottomuser}>
           <div className={styles.textuser2score}>Score: 0</div>
