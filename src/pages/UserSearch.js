@@ -5,7 +5,7 @@ import UserSearchComputer from './UserSearchComputer';
 import UserSearchTablet from './UserSearchTablet';
 import UserSearchMobile from './UserSearchMobile';
 
-class Index extends React.Component {
+class UserSearch extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
