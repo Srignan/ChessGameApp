@@ -4,7 +4,6 @@ import {
   useNavigationType,
   useLocation,
 } from "react-router-dom";
-import './global-styles.css';
 import Index from "./pages/Index";
 import IndexTablet from "./pages/IndexTablet";
 import IndexMobile from "./pages/IndexMobile";
