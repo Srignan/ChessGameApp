@@ -5,7 +5,7 @@ import HowToPlayComputer from './HowToPlayComputer';
 import HowToPlayTablet from './HowToPlayTablet';
 import HowToPlayMobile from './HowToPlayMobile';
 
-class Index extends React.Component {
+class HowToPlay extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
