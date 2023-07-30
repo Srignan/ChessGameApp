@@ -1865,7 +1865,7 @@ function playIfValidMove()
 						rookMoveSquare.append(rookPiece);
 					}
 				}
-				else if(moveEndSquare.hasAttribute("enPassantBlack") && (moveStartPiece.id.includes("Pawn")))
+				if(moveEndSquare.hasAttribute("enPassantBlack") && (moveStartPiece.id.includes("Pawn")))
 				{
 					let capturedId = Number(moveEndSquare.getAttribute("squareId")) + moveDown;
 					let capturedSquare = document.querySelector("[squareId='" + capturedId + "']");
@@ -1912,7 +1912,7 @@ function playIfValidMove()
 						rookMoveSquare.append(rookPiece);
 					}
 				}
-				else if(moveEndSquare.hasAttribute("enPassantWhite") && (moveStartPiece.id.includes("Pawn")))
+				if(moveEndSquare.hasAttribute("enPassantWhite") && (moveStartPiece.id.includes("Pawn")))
 				{
 					let capturedId = Number(moveEndSquare.getAttribute("id")) + moveUp;
 					let capturedSquare = document.querySelector("[squareId='" + capturedId + "']");
