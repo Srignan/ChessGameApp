@@ -2075,7 +2075,12 @@ function showLegalMoves()
 
 function hideLegalMoves()
 {
-	let uiElements = document.querySelectorAll(styles.uiElement);
+	let uiElements = document.querySelectorAll(styles.svgCircleNoPiece);
+	uiElements.forEach((uiElement) =>
+	{
+		uiElement.remove();
+	});
+	uiElements = document.querySelectorAll(styles.svgCirclePiece);
 	uiElements.forEach((uiElement) =>
 	{
 		uiElement.remove();
