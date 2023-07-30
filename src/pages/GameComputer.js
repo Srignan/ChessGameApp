@@ -126,7 +126,7 @@ useEffect(() => {
     createBoard();
   }, []);
 
-function dragStart(e)
+dragStart(e)
 {
 	moveStartId = Number(e.target.parentNode.getAttribute("squareId"));
 	moveStartPiece = e.target;
@@ -146,7 +146,7 @@ function dragStart(e)
 	}
 }
 
-function dragOver(e)
+dragOver(e)
 {
 	e.preventDefault();
 	/*e = e || window.event;
@@ -155,7 +155,7 @@ function dragOver(e)
 	console.log("X: "+dragX+" Y: "+dragY);*/
 }
 
-function dragDrop(e)
+dragDrop(e)
 {
 	e.stopPropagation();
 	if(e.target.children[0])
