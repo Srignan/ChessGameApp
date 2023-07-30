@@ -104,10 +104,10 @@ const GameComputer = () => {
           </button>
         </div>
         <div className={styles.content2Chess}>
-          <div
-            className={styles.chessboardcontainer}
-            id="divChessboardContainer"
-          />
+          <div className={styles.chessboardcontainer} id="divChessboardContainer">
+            <div className={styles.chessBoard} id="chessBoard"></div>
+	          <script src="chessBoard.js"></script>
+          </div>
         </div>
         <div className={styles.content3Bottomuser}>
           <div className={styles.textuser2score}>Score: 0</div>
