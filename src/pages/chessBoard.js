@@ -2585,7 +2585,7 @@ async function getMoves()
 {
 	let gameId = "g1";
 	fetch('/api/games/:gameID/moves', {
-      		method: 'GET',
+      		method: 'POST',
       		headers: {
         		'Content-Type': 'application/json',
       		},
@@ -2597,8 +2597,8 @@ async function getMoves()
 		})
 		
 		.catch((error) => {
-			console.error('Error sending email:', error);
-			errorsRef.current.textContent = "An error occurred while sending the email.";
+			console.error('Error getting moves:', error);
+			errorsRef.current.textContent = "An error occurred while getting the moves.";
 		});
 }
 
