@@ -14,8 +14,17 @@ const app = express(); // Create app
 app.use(cors());
 app.use(express.json());
 
-// Set up SendGrid with the API key
-sgMail.setApiKey("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");
+// Get the SendGrid API key from the Heroku environment variables
+const apiKey = process.env.SENDGRID_API_KEY;
+
+// Check if the API key is available
+if (!apiKey) {
+  console.error("SendGrid API key not found. Make sure you set the SENDGRID_API_KEY environment variable.");
+} else {
+  // Set the API key if available
+  sgMail.setApiKey(apiKey);
+  console.log("SendGrid APIP key successfully acquired.");
+}
 
 // Routes
 app.use("/api/auth", authRoute);
