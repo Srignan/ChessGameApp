@@ -490,7 +490,7 @@ function handlePinnedPieces(kingSquareId)
 		}
 		if((rank === 0) || (file === 0))
 		{
-			endId = 80;
+			endId = -20;
 			break;
 		}
 		endId += moveUpLeft;
@@ -599,7 +599,7 @@ function handlePinnedPieces(kingSquareId)
 		}
 		if((rank === 0) || (file === 7))
 		{
-			endId = 80;
+			endId = -20;
 			break;
 		}
 		endId += moveUpRight;
