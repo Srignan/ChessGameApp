@@ -8,6 +8,9 @@ const authRoute = require("./routes/auth.routes");
 const addFriendRoute = require("./routes/friend.route");
 const gamesRoute = require("./routes/games.route");
 
+// Include the sendVerifyEmail function with the correct name
+const sendVerifyEmail = require("./sendVerifyEmail");
+
 const app = express(); // Create app
 
 // Some things express uses
@@ -31,6 +34,20 @@ app.use("/api/auth", authRoute);
 app.use("/api/friends", addFriendRoute);
 app.use("/api/games", gamesRoute);
 
+// New endpoint for sending verification email
+app.post('/sendVerifyEmail', (req, res) => {
+  const { email } = req.body;
+
+  sendVerifyEmail(email) // Correct function name here
+    .then(() => {
+      console.log('Email sent successfully!');
+      res.json({ success: true });
+    })
+    .catch((error) => {
+      console.error('Error sending email:', error);
+      res.status(500).json({ error: 'An error occurred while sending the email.' });
+    });
+});
 
 // Serve the static files from the React app
 const clientBuildPath = path.join(__dirname, "..", "build");
