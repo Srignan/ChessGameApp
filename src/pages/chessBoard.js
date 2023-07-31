@@ -2586,10 +2586,7 @@ async function getMoves()
 	let gameId = "g1";
 	fetch('/api/games/:gameID/moves', {
       		method: 'GET',
-      		headers: {
-        		'Content-Type': 'application/json',
-      		},
-		body: JSON.stringify({ gameId }),
+      		params: JSON.stringify({ gameId }),
     		})
 		
 		.then((res) => {
