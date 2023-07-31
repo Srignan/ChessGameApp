@@ -2584,7 +2584,6 @@ function toWhiteBoardPOV()
 async function getMoves()
 {
 	fetch('/api/games/:gameID/moves')
-	{
 		.then((res) => {
 			movesRecieved = res.status;
 		})
@@ -2593,9 +2592,6 @@ async function getMoves()
 			console.error('Error sending email:', error);
 			errorsRef.current.textContent = "An error occurred while sending the email.";
 		});
-		
-		// Prevent re-registering
-	}, []);
 }
 
 function dragStart(e)
