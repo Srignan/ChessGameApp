@@ -2583,42 +2583,37 @@ function toWhiteBoardPOV()
 	});
 }
 
-async function getMoves()
+async function fetchGameMoves(gameID)
 {
-	let gameId = "g1";
 	try
 	{
-		const response = await fetch(`/api/games/${gameId}/moves`,
-		{
-			method: 'GET',
-			headers:
-			{
-				'Content-Type': 'application/json',
-			},
-		});
-	
+		const response = await fetch(`/api/games/${gameID}/moves`);
 		if (!response.ok)
 		{
-			throw new Error('Network response was not ok');
+			throw new Error("Failed to fetch game moves");
 		}
-		
 		const data = await response.json();
-		console.log(data.moves); // Assuming the server returns the moves property
-		// You can do further processing with the 'data.moves' here
-		
+		return data.moves;
 	}
 	catch (error)
 	{
-		console.error('Error getting moves:', error);
-		// Handle the error or show an error message to the user
+		console.error(error);
+		return null;
 	}
 }
 
-
-
 function dragStart(e)
 {
-	getMoves()
+	let gameID = 'g1';
+	fetchGameMoves(gameID)
+		.then((moves) => 
+		{
+			if (moves)
+			{
+				console.log(moves);
+			}
+		});
+	
 	moveStartId = Number(e.target.parentNode.getAttribute("squareId"));
 	moveStartPiece = e.target;
 	
