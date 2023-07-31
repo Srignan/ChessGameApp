@@ -41,7 +41,6 @@ router.post("/register", async (req, res) => {
 
     // Create a new user object based on the User model
     const newUser = new User({
-      0,
       email,
       username,
       password,
