@@ -2590,10 +2590,6 @@ async function getMoves()
 		},
       		body: "1"),
     	})
-		.then((req) => {
-			
-		})
-		
 		.then((res) => {
 			movesRecieved = res.status;
 		})
