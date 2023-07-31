@@ -2589,11 +2589,8 @@ async function getMoves()
       		headers: {
         		'Content-Type': 'application/json',
       		},
+		body: JSON.stringify({ gameId }),
     		})
-
-		.then((req) => {
-			req.params = gameId;
-		})
 		
 		.then((res) => {
 			movesRecieved = res.status;
