@@ -62,20 +62,5 @@ router.post("/register", async (req, res) => {
   }
 });
 
-// New endpoint for sending verification email
-router.post('/sendVerifyEmail', (req, res) => {
-  const { email } = req.body;
-
-  sendVerifyEmail(email)
-    .then(() => {
-      console.log('Email sent successfully!');
-      res.json({ success: true });
-    })
-    .catch((error) => {
-      console.error('Error sending email:', error);
-      res.status(500).json({ error: 'An error occurred while sending the email.' });
-    });
-});
-
 
 module.exports = router;
