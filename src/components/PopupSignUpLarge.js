@@ -77,7 +77,7 @@ const PopupSignUpLarge = ({ onClose }) => {
         />
         <div className={styles.popupheader}>
           <div className={styles.popuptexterrors}>
-            <span ref={messageRef} className={styles.popuptexterrorsTxt}>
+            <span ref={errorsRef} className={styles.popuptexterrorsTxt}>
               Errors and alerts appear here.
             </span>
           </div>
