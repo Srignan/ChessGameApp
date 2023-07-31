@@ -2588,7 +2588,7 @@ async function getMoves()
       		headers: {
         		'Content-Type': 'application/json',
 		},
-      		body: JSON.stringify({"1"}),
+      		body: JSON.stringify({ "1" }),
     	})
 		.then((res) => {
 			movesRecieved = res.status;
