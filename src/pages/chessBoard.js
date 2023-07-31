@@ -2581,29 +2581,33 @@ function toWhiteBoardPOV()
 	});
 }
 
-async function getMoves() {
-	let gameID = "g1";
+async function getMoves()
+{
+	let gameId = "g1";
 	try {
-	    	const response = await fetch('/api/games/${gameID}/moves', {
-	      	method: 'GET',
-	      	headers: {
-	        'Content-Type': 'application/json',
+		const response = await fetch(`/api/games/${gameId}/moves`, {
+		method: 'GET',
+		headers: {
+	        	'Content-Type': 'application/json',
 	      	},
-	    });
+	});
 	
-	    if (!response.ok)
-	    {
-	      throw new Error('Network response was not ok');
-	    }
+	if (!response.ok)
+	{
+		throw new Error('Network response was not ok');
+	}
 	
-	    const data = await response.json();
-	    console.log(data.moves); // Assuming the server returns the moves property
+	const data = await response.json();
+	console.log(data.moves); // Assuming the server returns the moves property
+	// You can do further processing with the 'data.moves' here
 	
-	} catch (error) {
+	} catch (error)
+	{
 		console.error('Error getting moves:', error);
-		errorsRef.current.textContent = "An error occurred while getting the moves.";
+	    	// Handle the error or show an error message to the user
 	}
 }
+
 
 function dragStart(e)
 {
