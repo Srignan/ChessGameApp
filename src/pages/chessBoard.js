@@ -2584,7 +2584,7 @@ function toWhiteBoardPOV()
 async function getMoves()
 {
 	let gameId = "g1";
-	fetch('/api/games/:gameID/moves?gameId=' + gameId, {
+	fetch('/api/games/:gameID=' + gameId + '/moves', {
       		method: 'GET',
 		headers: {
         		'Content-Type': 'application/json',
