@@ -2604,7 +2604,7 @@ async function fetchGameMoves(gameID)
 
 function dragStart(e)
 {
-	let gameID = 'g1';
+	let gameID = 1;
 	fetchGameMoves(gameID)
 		.then((moves) => 
 		{
