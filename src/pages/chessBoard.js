@@ -2446,7 +2446,7 @@ function playIfValidMove()
 
 function clearPinned()
 {
-	let allPinned = document.querySelectorAll("[isPinned=1]");
+	let allPinned = document.querySelectorAll("[isPinned='1']");
 	allPinned.forEach((pinnedPiece) =>
 	{
 		pinnedPiece.removeAttribute("isPinned");
