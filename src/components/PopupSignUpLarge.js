@@ -51,12 +51,31 @@ const PopupSignUpLarge = ({ onClose }) => {
 
     // Perform all validation/error messages.
 
-    errorsRef.current.textContent = "Check your email!";
+    // Call the API endpoint to send the email here.
+    fetch('/sendVerifyEmail', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email }),
+    })
+      .then((response) => {
+        if (response.ok) {
+          console.log('Email sent successfully!');
+          errorsRef.current.textContent = "Check your email!";
+        } else {
+          throw new Error('Email sending failed.');
+        }
+      })
+      .catch((error) => {
+        console.error('Error sending email:', error);
+        errorsRef.current.textContent = "An error occurred while sending the email.";
+      });
 
     // Prevent re-registering
   }, []);
 
-  // Function that sends a test email.
+  // Function that sends a test email. DELETE THIS?
   sendEmail(() =>
   {
     const sgMail = require('@sendgrid/mail')
