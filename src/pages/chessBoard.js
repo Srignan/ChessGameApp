@@ -1,3 +1,6 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+const fetch = require('node-fetch');
 import styles from "./GameComputer.module.css";
 const playerDisplay = document.querySelector("#player");
 const numRanks = 8;
