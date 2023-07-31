@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-const fetch = require('node-fetch');
 import styles from "./GameComputer.module.css";
 const playerDisplay = document.querySelector("#player");
 const numRanks = 8;
@@ -2587,29 +2586,34 @@ function toWhiteBoardPOV()
 async function getMoves()
 {
 	let gameId = "g1";
-	try {
-		const response = await fetch(`/api/games/${gameId}/moves`, {
-		method: 'GET',
-		headers: {
-	        	'Content-Type': 'application/json',
-	      	},
-	});
-	
-	if (!response.ok)
+	try
 	{
-		throw new Error('Network response was not ok');
+		const response = await fetch(`/api/games/${gameId}/moves`,
+		{
+			method: 'GET',
+			headers:
+			{
+				'Content-Type': 'application/json',
+			},
+		});
+	
+		if (!response.ok)
+		{
+			throw new Error('Network response was not ok');
+		}
+		
+		const data = await response.json();
+		console.log(data.moves); // Assuming the server returns the moves property
+		// You can do further processing with the 'data.moves' here
+		
 	}
-	
-	const data = await response.json();
-	console.log(data.moves); // Assuming the server returns the moves property
-	// You can do further processing with the 'data.moves' here
-	
-	} catch (error)
+	catch (error)
 	{
 		console.error('Error getting moves:', error);
-	    	// Handle the error or show an error message to the user
+		// Handle the error or show an error message to the user
 	}
 }
+
 
 
 function dragStart(e)
