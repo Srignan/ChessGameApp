@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useRef } from "react";
 import PopupLoginLarge from "./PopupLoginLarge";
 import PortalPopup from "./PortalPopup";
 import { useNavigate } from "react-router-dom";
@@ -24,8 +24,35 @@ const PopupSignUpLarge = ({ onClose }) => {
   }, []);
 
   const onPopupButtonSignUpClick = useCallback(() => {
-    navigate("/landing");
-  }, [navigate]);
+    signUp();
+  }, []);
+
+
+
+  // Create a ref for each input element
+  const inputUserRef = useRef(null);
+  const inputEmailRef = useRef(null);
+  const inputPassRef = useRef(null);
+  const inputPassConfirmRef = useRef(null);
+
+  // Ref for the error messages.
+  const errorsRef = useRef(null);
+
+  // The new function to grab data from the form
+  const signUp = useCallback(() =>
+  {
+    console.log("Signing up.")
+    const username = inputUserRef.current.value;
+    const email = inputEmailRef.current.value;
+    const password = inputPassRef.current.value;
+    const confirmPassword = inputPassConfirmRef.current.value;
+    console.log("Username is " + username);
+    console.log("Email is " + email);
+    console.log("Password is " + password);
+    console.log("confirmPassword is " + confirmPassword);
+
+    errorsRef.current.textContent = "Testing, 1 2 3...";
+  }, []);
 
   return (
     <>
@@ -50,22 +77,21 @@ const PopupSignUpLarge = ({ onClose }) => {
         />
         <div className={styles.popupheader}>
           <div className={styles.popuptexterrors}>
-            <span className={styles.popuptexterrorsTxt}>
-              <span>{`Errors and `}</span>
-              <span className={styles.alerts}>alerts</span>
-              <span> appear here.</span>
+            <span ref={messageRef} className={styles.popuptexterrorsTxt}>
+              Errors and alerts appear here.
             </span>
           </div>
           <b className={styles.popuptexttitlesignup}>Sign Up</b>
         </div>
         <div className={styles.popupforms}>
           <input
+            ref={inputPassConfirmRef}
             className={styles.popupinputformconfirmpassword}
             type="password"
             placeholder="Confirm Password"
             minLength={8}
             required
-            id="inputPass"
+            id="inputPassConfirm"
           />
           <button
             className={styles.popupimghideconfirmpassword}
@@ -76,6 +102,7 @@ const PopupSignUpLarge = ({ onClose }) => {
             Confirm your password:
           </b>
           <input
+            ref={inputPassRef}
             className={styles.popupinputformpassword}
             type="password"
             placeholder="New Password"
@@ -90,6 +117,7 @@ const PopupSignUpLarge = ({ onClose }) => {
           />
           <b className={styles.popuptextlabelpassword}>Enter a new password:</b>
           <input
+            ref={inputEmailRef}
             className={styles.popupinputformemail}
             type="email"
             placeholder="example@email.com"
@@ -99,6 +127,7 @@ const PopupSignUpLarge = ({ onClose }) => {
           />
           <b className={styles.popuptextlabelemail}>Enter your email:</b>
           <input
+            ref={inputUserRef}
             className={styles.popupinputformnewusername}
             type="text"
             placeholder="New Username"
