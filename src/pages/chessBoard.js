@@ -2583,7 +2583,17 @@ function toWhiteBoardPOV()
 
 async function getMoves()
 {
-	fetch('/api/games/:gameID/moves')
+	fetch('/api/games/:gameID/moves', {
+      		method: 'GET',
+      		headers: {
+        		'Content-Type': 'string',
+		},
+      		body: "1"),
+    	}))
+		.then((req) => {
+			
+		})
+		
 		.then((res) => {
 			movesRecieved = res.status;
 		})
