@@ -5,6 +5,7 @@ const numFiles = 8;
 const endOfRank = 7;
 const endOfFile = 56;
 var isSendingMove = true;
+var movesRecieved;
 var playerColor = true;
 var moveStartPiece;
 var moveStartId;
@@ -2580,8 +2581,26 @@ function toWhiteBoardPOV()
 	});
 }
 
+async function getMoves()
+{
+	fetch('/api/games/:gameID/moves')
+	
+	.then((res) => {
+		movesRecieved = res.status;
+	})
+	
+	.catch((error) => {
+		console.error('Error sending email:', error);
+		errorsRef.current.textContent = "An error occurred while sending the email.";
+	});
+	
+	// Prevent re-registering
+	}, []);
+}
+
 function dragStart(e)
 {
+	getMoves()
 	moveStartId = Number(e.target.parentNode.getAttribute("squareId"));
 	moveStartPiece = e.target;
 	
