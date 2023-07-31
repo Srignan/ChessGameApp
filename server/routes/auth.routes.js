@@ -2,7 +2,7 @@
 const express = require("express");
 const router = express.Router();
 const { User } = require("../chessSchema");
-const sendEmail = require('../sendEmail'); // Adjust the path if needed
+const sendVerifyEmail = require('../sendVerifyEmail'); // Adjust the path if needed
 
 // POST /api/auth/login
 router.post("/login", async (req, res) => {
@@ -66,7 +66,7 @@ router.post("/register", async (req, res) => {
 router.post('/sendVerifyEmail', (req, res) => {
   const { email } = req.body;
 
-  sendEmail(email)
+  sendVerifyEmail(email)
     .then(() => {
       console.log('Email sent successfully!');
       res.json({ success: true });
