@@ -2589,7 +2589,7 @@ async function getMoves()
         		'Content-Type': 'string',
 		},
       		body: "1"),
-    	}))
+    	})
 		.then((req) => {
 			
 		})
