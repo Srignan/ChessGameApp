@@ -75,28 +75,6 @@ const PopupSignUpLarge = ({ onClose }) => {
     // Prevent re-registering
   }, []);
 
-  // Function that sends a test email. DELETE THIS?
-  sendEmail(() =>
-  {
-    const sgMail = require('@sendgrid/mail')
-    sgMail.setApiKey(process.env.SENDGRID_API_KEY)
-    const msg = {
-      to: email, // recipient
-      from: 'kevinjunk3332@gmail.com', // All emails sent from my junk email
-      subject: 'Chess - Verify your email address',
-      text: 'Click below to verify!',
-      html: '<strong>To verify your email, click the following link:</strong>',
-    }
-    sgMail
-      .send(msg)
-      .then(() => {
-      console.log('Email sent!')
-    })
-    .catch((error) => {
-      console.error(error)
-    })
-  }, []);
-
     // Runs automatically when the component or page finishes loading.
     useEffect(() => {
       console.log('Page fully loaded!');
