@@ -52,7 +52,7 @@ const PopupSignUpLarge = ({ onClose }) => {
     // Perform all validation/error messages.
 
     // Call the API endpoint to send the email here.
-    fetch('../server/sendVerifyEmail', {
+    fetch('/sendVerifyEmail', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
