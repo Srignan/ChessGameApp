@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import createBoard from './chessBoard.js';
+import createBoard from './chessBoardMobile.js';
 import { useState, useCallback } from "react";
 import PopupLoseSmall from "../components/PopupLoseSmall";
 import PortalPopup from "../components/PortalPopup";
@@ -85,7 +85,7 @@ const GameMobile = () => {
           <div className={styles.content2divider} />
           <div className={styles.chessboardcontainer} id="divChessboardContainer">
               <div className={styles.chessBoard} id="chessBoard"></div>
-	            <script src="chessBoard.js"></script>
+	            <script src="chessBoardMobile.js"></script>
           </div>
         </div>
         <div className={styles.content3Bottomuser}>
