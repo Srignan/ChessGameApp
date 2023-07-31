@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const path = require("path"); // Import the path module
+const sgMail = require("@sendgrid/mail"); // Import the SendGrid module
 
 // Include routes
 const authRoute = require("./routes/auth.routes");
@@ -12,6 +13,9 @@ const app = express(); // Create app
 // Some things express uses
 app.use(cors());
 app.use(express.json());
+
+// Set up SendGrid with the API key
+sgMail.setApiKey("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");
 
 // Routes
 app.use("/api/auth", authRoute);
