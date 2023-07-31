@@ -14,4 +14,4 @@ function sendVerifyEmail(email) {
   return sgMail.send(msg);
 }
 
-module.exports = sendEmail;
+module.exports = sendVerifyEmail;
