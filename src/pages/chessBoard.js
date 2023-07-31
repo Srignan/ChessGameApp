@@ -179,7 +179,7 @@ function populateAllLegalMovesWhite()
 	{
 		moveStartId = Number(piece.parentNode.getAttribute("squareId"));
 		pieceId = Number(piece.getAttribute("pieceId"));
-		if(!(pieceId === 28) && !(piece.getAttribute("isPinned") === 1))
+		if(!(pieceId === 28) && !(piece.hasAttribute("isPinned")))
 		{
 			moveStartPiece = piece;
 			findLegalMoves();
@@ -199,7 +199,7 @@ function populateAllLegalMovesBlack()
 	{
 		moveStartId = Number(piece.parentNode.getAttribute("squareId"));
 		pieceId = Number(piece.getAttribute("pieceId"));
-		if(!(pieceId === 4) && !(piece.getAttribute("isPinned") === 1))
+		if(!(pieceId === 4) && !(piece.hasAttribute("isPinned")))
 		{
 			moveStartPiece = piece;
 			findLegalMoves();
