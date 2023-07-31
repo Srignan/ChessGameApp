@@ -6,6 +6,7 @@ const numRanks = 8;
 const numFiles = 8;
 const endOfRank = 7;
 const endOfFile = 56;
+var gameID;
 var isSendingMove = true;
 var movesRecieved;
 var playerColor = true;
@@ -59,6 +60,7 @@ var boardMatrix =
 
 function createBoard()
 {
+	gameID = 1;
 	const chessBoard = document.querySelector("#chessBoard"); 
 	boardMatrix.forEach((startingPiece, i) => 
 	{
@@ -2602,10 +2604,28 @@ async function fetchGameMoves(gameID)
 	}
 }
 
+async function pushGameMoves()
+{
+	try
+	{
+		const response = await fetch(`/api/games/${gameID}/moves`);
+		if (!response.ok)
+		{
+			throw new Error("Failed to fetch game moves");
+		}
+		const data = await response.json();
+		return data.moves;
+	}
+	catch (error)
+	{
+		console.error(error);
+		return null;
+	}
+}
+
 function dragStart(e)
 {
-	let gameID = 1;
-	fetchGameMoves(gameID)
+	fetchGameMoves()
 		.then((moves) => 
 		{
 			if (moves)
