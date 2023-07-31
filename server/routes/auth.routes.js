@@ -2,6 +2,7 @@
 const express = require("express");
 const router = express.Router();
 const { User } = require("../chessSchema");
+const sendEmail = require('../sendEmail'); // Adjust the path if needed
 
 // POST /api/auth/login
 router.post("/login", async (req, res) => {
@@ -59,6 +60,21 @@ router.post("/register", async (req, res) => {
     console.error(error);
     res.status(500).json({ error: "Registration failed" });
   }
+});
+
+// New endpoint for sending verification email
+router.post('/sendVerifyEmail', (req, res) => {
+  const { email } = req.body;
+
+  sendEmail(email)
+    .then(() => {
+      console.log('Email sent successfully!');
+      res.json({ success: true });
+    })
+    .catch((error) => {
+      console.error('Error sending email:', error);
+      res.status(500).json({ error: 'An error occurred while sending the email.' });
+    });
 });
 
 
