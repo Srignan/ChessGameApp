@@ -35,7 +35,7 @@ const gameSchema = new mongoose.Schema({
   gameID: Number,
   game: [String],
   players: [String],
-  color: Boolean,  // true represents White, false represents Black
+  color: String,  // true represents White, false represents Black
   winner: String,  // can be "White", "Black", "Draw", or null for in-progress games
   whiteTime: Number,
   blackTime: Number
