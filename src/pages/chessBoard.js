@@ -2586,7 +2586,7 @@ async function getMoves()
 	fetch('/api/games/:gameID/moves', {
       		method: 'GET',
       		headers: {
-        		'Content-Type': 'string',
+        		'Content-Type': 'application/json',
 		},
       		body: JSON.stringify({1})),
     	})
