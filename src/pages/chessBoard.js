@@ -2815,11 +2815,11 @@ async function pushGameMoves(gameID, move)
 	}
 }
 
-async function fetchGameMoves(gameID)
+async function fetchGameMoves()
 {
 	try
 	{
-		const response = await fetch('/api/games/${gameID}/moves');
+		const response = await fetch('/api/games/${gameID}/moves', {method: 'POST', headers: {'Content-Type': 'application/json',}, body: move,});
 		if (!response.ok)
 		{
 			throw new Error("Failed to fetch game moves");
@@ -2836,7 +2836,7 @@ async function fetchGameMoves(gameID)
 
 function dragStart(e)
 {
-	fetchGameMoves(1)
+	fetchGameMoves()
 		.then((moves) => 
 		{
 			if (moves)
