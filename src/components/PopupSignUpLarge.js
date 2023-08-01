@@ -49,6 +49,7 @@ const PopupSignUpLarge = ({ onClose }) => {
     console.log("confirmPassword is " + confirmPassword);
 
     // Perform all validation/error messages.
+    // validateLogin(username, email, password, confirmPassword);
 
     fetch('/api/auth/register', { // *
       method: 'POST',
@@ -71,6 +72,31 @@ const PopupSignUpLarge = ({ onClose }) => {
         console.error('Error:', error);
         errorsRef.current.textContent = "An error occurred while registering.";
       });
+
+    // Registration complete, now send an email to verify.
+
+    // First, send the user an email so they can verify their account.
+    fetch('/sendVerifyEmail', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email }), // *
+    })
+      .then((response) => {
+        if (response.ok) {
+          console.log('Email sent successfully!');
+          errorsRef.current.textContent = "Account created; check your email!";
+        } else {
+          throw new Error('Email sending failed.');
+        }
+      })
+      .catch((error) => {
+        console.error('Error sending email:', error);
+        errorsRef.current.textContent = "An error occurred while sending the email.";
+      });
+
+  // Email sent! The user can now go to the login page to login (after verifying, of course).
 
   }, [navigate]); // *
 
