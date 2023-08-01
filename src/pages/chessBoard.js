@@ -2801,7 +2801,7 @@ async function pushGameMoves(move)
 	currentMoves.push(move);
 	try
 	{
-		const response = await fetch(`/api/games/${gameID}/moves`, body: move);
+		const response = await fetch(`/api/games/${gameID}/moves`, {body: move,});
 		if (!response.ok)
 		{
 			throw new Error("Failed to push game moves");
