@@ -35,7 +35,7 @@ const PopupSignUpLarge = ({ onClose }) => {
   const inputPassConfirmRef = useRef(null);
 
   // Ref for the error messages.
-  const errorsRef = useRef(null);
+  const errorsRef = useRef("");
 
   const signUp = useCallback(() => {
     console.log("Signing up.")
@@ -51,6 +51,9 @@ const PopupSignUpLarge = ({ onClose }) => {
     // Perform all validation/error messages.
     // validateLogin(username, email, password, confirmPassword);
 
+    // Reset the errors before the fetch calls
+    errorsRef.current.textContent = "";
+
     fetch('/api/auth/register', { // *
       method: 'POST',
       headers: {
@@ -62,8 +65,7 @@ const PopupSignUpLarge = ({ onClose }) => {
       .then((data) => { // *
         if (data.message) {
           console.log('User registered successfully!');
-          errorsRef.current.textContent = "Check your email!";
-          navigate('/login'); // *
+          errorsRef.current.textContent = "Account created; check your email!";
         } else {
           throw new Error('Registration failed.');
         }
@@ -98,7 +100,7 @@ const PopupSignUpLarge = ({ onClose }) => {
 
   // Email sent! The user can now go to the login page to login (after verifying, of course).
 
-  }, [navigate]); // *
+  }, []); // *
 
   useEffect(() => {
     console.log('Page fully loaded!');
