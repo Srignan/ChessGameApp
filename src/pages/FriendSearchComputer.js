@@ -143,7 +143,7 @@ const FriendSearchComputer = () => {
                   >
                     {friend.username}
                   </b>
-                  <div className={styles.cardelo}>({friend.elo})</div> // * Display the friend's ELO
+                  <div className={styles.cardelo}>({friend.elo})</div> {/* Display the friend's ELO */}
                 </div>
               </div>
             <div className={styles.cardbuttons}>
