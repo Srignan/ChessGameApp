@@ -3508,10 +3508,34 @@ function dragDrop(e)
 					{
 						isSendingMove = false;
 						move = moves[moves.length - 1]
+						if(e.target.children[0])
+						{
+							moveEndId = Number(e.target.parentNode.getAttribute("squareId"));
+							moveEndSquare = e.target.parentNode;
+						}
+						else
+						{
+							moveEndId = Number(e.target.getAttribute("squareId"));
+							moveEndSquare = e.target;
+						}
+						hideLegalMoves();
+						playIfValidMove();
 					}
 					else
 					{
 						isSendingMove = true;
+						if(e.target.children[0])
+						{
+							moveEndId = Number(e.target.parentNode.getAttribute("squareId"));
+							moveEndSquare = e.target.parentNode;
+						}
+						else
+						{
+							moveEndId = Number(e.target.getAttribute("squareId"));
+							moveEndSquare = e.target;
+						}
+						hideLegalMoves();
+						playIfValidMove();
 					}
 				}
 				else
@@ -3520,25 +3544,37 @@ function dragDrop(e)
 					{
 						isSendingMove = false;
 						move = moves[moves.length - 1]
+						if(e.target.children[0])
+						{
+							moveEndId = Number(e.target.parentNode.getAttribute("squareId"));
+							moveEndSquare = e.target.parentNode;
+						}
+						else
+						{
+							moveEndId = Number(e.target.getAttribute("squareId"));
+							moveEndSquare = e.target;
+						}
+						hideLegalMoves();
+						playIfValidMove();
 					}
 					else
 					{
 						isSendingMove = true;
+						if(e.target.children[0])
+						{
+							moveEndId = Number(e.target.parentNode.getAttribute("squareId"));
+							moveEndSquare = e.target.parentNode;
+						}
+						else
+						{
+							moveEndId = Number(e.target.getAttribute("squareId"));
+							moveEndSquare = e.target;
+						}
+						hideLegalMoves();
+						playIfValidMove();
 					}
 				}
-				if(e.target.children[0])
-				{
-					moveEndId = Number(e.target.parentNode.getAttribute("squareId"));
-					moveEndSquare = e.target.parentNode;
-				}
-				else
-				{
-					moveEndId = Number(e.target.getAttribute("squareId"));
-					moveEndSquare = e.target;
-				}
-				hideLegalMoves();
-				playIfValidMove();
-				}
+			}
 		});
 }
 
