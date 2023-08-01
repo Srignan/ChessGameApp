@@ -2798,7 +2798,6 @@ function toWhiteBoardPOV()
 
 async function pushGameMoves(move)
 {
-	currentMoves.push(move);
 	try
 	{
 		const response = await fetch('/api/games/${gameID}/moves', {body: move,});
