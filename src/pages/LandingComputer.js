@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import PopupNoAPI from "../components/PopupNoAPI";
 import PortalPopup from "../components/PortalPopup";
 import { useNavigate } from "react-router-dom";
@@ -86,6 +86,49 @@ const LandingComputer = () => {
     }
   }, []);
 
+  // Function to read the username and rating from the cookie
+  function readCookie() {
+  // Get the cookie string
+  const cookieString = document.cookie;
+
+  // Extract the value of the 'userData' cookie
+  const cookieName = 'userData=';
+  const cookieStartIndex = cookieString.indexOf(cookieName);
+  if (cookieStartIndex === -1) {
+    return null; // Cookie not found
+  }
+
+  let cookieValue = '';
+  const cookieEndIndex = cookieString.indexOf(';', cookieStartIndex);
+  if (cookieEndIndex === -1) {
+    cookieValue = cookieString.substring(cookieStartIndex + cookieName.length);
+  } else {
+    cookieValue = cookieString.substring(cookieStartIndex + cookieName.length, cookieEndIndex);
+  }
+
+  // Parse the JSON string to get the cookie data object
+  try {
+    const cookieData = JSON.parse(cookieValue);
+    return cookieData;
+  } catch (error) {
+    console.error('Error parsing cookie:', error);
+    return null;
+  }
+}
+
+// Ref for the welcome messages.
+  const welcomeRef = useRef("");
+
+// Function to clear the cookie and navigate to the homepage
+function logout() {
+  // Clear the cookie by setting an expired date in the past
+  const cookieOptions = `expires=${new Date(0).toUTCString()}`;
+  document.cookie = `userData=; ${cookieOptions}`;
+
+  // Navigate the user to the homepage (change to the homepage route)
+  navigate("/");
+}
+  
   return (
     <>
       <div className={styles.landingcomputer}>
@@ -96,7 +139,7 @@ const LandingComputer = () => {
           >
             <b className={styles.headerbuttontext}>Visit Profile</b>
           </button>
-          <b className={styles.headertextwelcomeusername}>Welcome, Username!</b>
+          <b ref={welcomeRef} className={styles.headertextwelcomeusername}>Welcome, Username!</b>
         </div>
         <div className={styles.content1}>
           <div className={styles.content1divider} />
