@@ -1,13 +1,18 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useRef } from "react"; // * added useRef
 import PopupSignUpLarge from "./PopupSignUpLarge";
 import PortalPopup from "./PortalPopup";
 import PopupForgotLarge from "./PopupForgotLarge";
 import { useNavigate } from "react-router-dom";
 import styles from "./PopupLoginLarge.module.css";
+
 const PopupLoginLarge = ({ onClose }) => {
   const [isPopupSignUpLargeOpen, setPopupSignUpLargeOpen] = useState(false);
   const [isPopupForgotLargeOpen, setPopupForgotLargeOpen] = useState(false);
   const navigate = useNavigate();
+
+  // Create refs for the username/email and password fields
+  const inputUserEmailRef = useRef(null); // *
+  const inputPassRef = useRef(null); // *
 
   const openPopupSignUpLarge = useCallback(() => {
     setPopupSignUpLargeOpen(true);
@@ -21,9 +26,30 @@ const PopupLoginLarge = ({ onClose }) => {
     window.open("Call togglePassword(); here.");
   }, []);
 
-  const onPopupButtonLoginClick = useCallback(() => {
-    navigate("/landing");
-  }, [navigate]);
+  const onPopupButtonLoginClick = useCallback(() => { // *
+    const usernameOrEmail = inputUserEmailRef.current.value;
+    const password = inputPassRef.current.value;
+
+    fetch('/api/auth/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ usernameOrEmail, password }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.message) {
+          console.log('User logged in successfully!');
+          navigate("/landing");
+        } else {
+          throw new Error('Login failed.');
+        }
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  }, [navigate]); // *
 
   const openPopupForgotLarge = useCallback(() => {
     setPopupForgotLargeOpen(true);
@@ -72,6 +98,7 @@ const PopupLoginLarge = ({ onClose }) => {
             minLength={8}
             required
             id="inputPass"
+            ref={inputPassRef} // *
           />
           <button
             className={styles.popupimghidepassword}
@@ -86,6 +113,7 @@ const PopupLoginLarge = ({ onClose }) => {
             minLength={3}
             required
             id="inputUserEmail"
+            ref={inputUserEmailRef} // *
           />
           <b className={styles.popuptextlabelusername}>
             Enter your username or email:
