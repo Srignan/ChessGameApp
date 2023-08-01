@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 import PopupNoAPI from "../components/PopupNoAPI";
 import PortalPopup from "../components/PortalPopup";
 import { useNavigate } from "react-router-dom";
@@ -15,6 +15,7 @@ const LandingComputer = () => {
   }, [navigate]);
 
   const onButtonLogOutClick = useCallback(() => {
+    logout();
     navigate("/");
   }, [navigate]);
 
@@ -124,10 +125,27 @@ function logout() {
   // Clear the cookie by setting an expired date in the past
   const cookieOptions = `expires=${new Date(0).toUTCString()}`;
   document.cookie = `userData=; ${cookieOptions}`;
-
-  // Navigate the user to the homepage (change to the homepage route)
-  navigate("/");
 }
+
+useEffect(() => {
+
+    // Function to read the cookie as soon as the page loads
+    const cookieData = readCookie();
+    if (cookieData) {
+      // Extract username and rating from the cookie data
+      const { username, rating } = cookieData;
+      console.log("Cookie read successful. Username is " + username + " and rating is " + rating ".");
+      // Now you have the username and rating in separate variables,
+      // you can use them as needed in your component or application logic.
+
+      // Update welcome message
+      welcomeRef.current.textContent = "Welcome, " + username + "!";
+    } else {
+      // Cookie not found or error reading it
+      console.log("Cookie read unsuccessful.");
+      // Handle as appropriate for your application
+    }
+  }, []);
   
   return (
     <>
