@@ -116,6 +116,7 @@ function readCookie() {
         if (data.message) {
           console.log('User logged in successfully!');
           // Save cookie
+          saveCookie();
           navigate("/landing");
         } else {
           throw new Error('Login failed.');
