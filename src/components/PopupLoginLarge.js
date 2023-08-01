@@ -30,6 +30,56 @@ const PopupLoginLarge = ({ onClose }) => {
     login();
   }, []); // *
 
+// Function to save the username and rating in a cookie
+function saveCookie(username, rating) {
+  // Create an object to store the data you want to save in the cookie
+  const cookieData = {
+    username,
+    rating,
+  };
+
+  // Convert the object to a JSON string
+  const cookieValue = JSON.stringify(cookieData);
+
+  // Set the cookie with an expiration time (e.g., 1 day)
+  const expirationDate = new Date();
+  expirationDate.setDate(expirationDate.getDate() + 1);
+  const cookieOptions = `expires=${expirationDate.toUTCString()}`;
+
+  // Save the cookie
+  document.cookie = `userData=${cookieValue}; ${cookieOptions}`;
+}
+
+// Function to read the username and rating from the cookie
+function readCookie() {
+  // Get the cookie string
+  const cookieString = document.cookie;
+
+  // Extract the value of the 'userData' cookie
+  const cookieName = 'userData=';
+  const cookieStartIndex = cookieString.indexOf(cookieName);
+  if (cookieStartIndex === -1) {
+    return null; // Cookie not found
+  }
+
+  let cookieValue = '';
+  const cookieEndIndex = cookieString.indexOf(';', cookieStartIndex);
+  if (cookieEndIndex === -1) {
+    cookieValue = cookieString.substring(cookieStartIndex + cookieName.length);
+  } else {
+    cookieValue = cookieString.substring(cookieStartIndex + cookieName.length, cookieEndIndex);
+  }
+
+  // Parse the JSON string to get the cookie data object
+  try {
+    const cookieData = JSON.parse(cookieValue);
+    return cookieData;
+  } catch (error) {
+    console.error('Error parsing cookie:', error);
+    return null;
+  }
+}
+
   // Ref for the error messages.
   const errorsRef = useRef("");
 
@@ -80,6 +130,20 @@ const PopupLoginLarge = ({ onClose }) => {
   useEffect(() => {
     // Clear errors on first load.
     errorsRef.current.textContent = "";
+
+    // Function to read the cookie as soon as the page loads
+    const cookieData = readCookie();
+    if (cookieData) {
+      // Extract username and rating from the cookie data
+      const { username, rating } = cookieData;
+      console.log("Cookie read successful. Username is " + username + " and rating is " + rating ".");
+      // Now you have the username and rating in separate variables,
+      // you can use them as needed in your component or application logic.
+    } else {
+      // Cookie not found or error reading it
+      console.log("Cookie read unsuccessful.");
+      // Handle as appropriate for your application
+    }
   }, []);
 
   const openPopupForgotLarge = useCallback(() => {
