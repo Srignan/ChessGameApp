@@ -1,11 +1,12 @@
 import { useState, useCallback, useRef, useEffect } from "react";
 import PopupLoginLarge from "./PopupLoginLarge";
 import PortalPopup from "./PortalPopup";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom"; // *
 import styles from "./PopupSignUpLarge.module.css";
+
 const PopupSignUpLarge = ({ onClose }) => {
   const [isPopupLoginLargeOpen, setPopupLoginLargeOpen] = useState(false);
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // *
 
   const openPopupLoginLarge = useCallback(() => {
     setPopupLoginLargeOpen(true);
@@ -36,9 +37,7 @@ const PopupSignUpLarge = ({ onClose }) => {
   // Ref for the error messages.
   const errorsRef = useRef(null);
 
-  // The new function to grab data from the form
-  const signUp = useCallback(() =>
-  {
+  const signUp = useCallback(() => {
     console.log("Signing up.")
     const username = inputUserRef.current.value;
     const email = inputEmailRef.current.value;
@@ -51,36 +50,34 @@ const PopupSignUpLarge = ({ onClose }) => {
 
     // Perform all validation/error messages.
 
-    // Call the API endpoint to send the email here.
-    fetch('/sendVerifyEmail', {
+    fetch('/api/auth/register', { // *
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ email }),
+      body: JSON.stringify({ username, email, password }), // *
     })
-      .then((response) => {
-        if (response.ok) {
-          console.log('Email sent successfully!');
+      .then((response) => response.json()) // *
+      .then((data) => { // *
+        if (data.message) {
+          console.log('User registered successfully!');
           errorsRef.current.textContent = "Check your email!";
+          navigate('/login'); // *
         } else {
-          throw new Error('Email sending failed.');
+          throw new Error('Registration failed.');
         }
       })
-      .catch((error) => {
-        console.error('Error sending email:', error);
-        errorsRef.current.textContent = "An error occurred while sending the email.";
+      .catch((error) => { // *
+        console.error('Error:', error);
+        errorsRef.current.textContent = "An error occurred while registering.";
       });
 
-    // Prevent re-registering
-  }, []);
+  }, [navigate]); // *
 
-    // Runs automatically when the component or page finishes loading.
-    useEffect(() => {
-      console.log('Page fully loaded!');
-  
-      errorsRef.current.textContent = "";
-    }, []);
+  useEffect(() => {
+    console.log('Page fully loaded!');
+    errorsRef.current.textContent = "";
+  }, []);
 
   return (
     <>
