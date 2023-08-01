@@ -2427,7 +2427,7 @@ function playIfValidMove()
 			{
 				if(moveStartPieceId === 24)
 				{
-					if(allLegalMovesWhite[31].includes(moveEndId))
+					if(allLegalMovesWhite[31 - 16].includes(moveEndId))
 					{
 						otherPiece = document.querySelector("[pieceId='" + 31 + "']");
 						if(!(startRank === Math.floor(Number(otherPiece.parentNode.getAttribute("squareId")) / numRanks)))
@@ -2443,7 +2443,7 @@ function playIfValidMove()
 				}
 				else
 				{
-					if(allLegalMovesWhite[24].includes(moveEndId))
+					if(allLegalMovesWhite[24 - 16].includes(moveEndId))
 					{
 						otherPiece = document.querySelector("[pieceId='" + 24 + "']");
 						if(!(startRank === Math.floor(Number(otherPiece.parentNode.getAttribute("squareId")) / numRanks)))
@@ -2462,7 +2462,7 @@ function playIfValidMove()
 			{
 				if(moveStartPieceId === 0)
 				{
-					if(allLegalMovesWhite[7].includes(moveEndId))
+					if(allLegalMovesBlack[7].includes(moveEndId))
 					{
 						otherPiece = document.querySelector("[pieceId='" + 7 + "']");
 						if(!(startRank === Math.floor(Number(otherPiece.parentNode.getAttribute("squareId")) / numRanks)))
@@ -2478,7 +2478,7 @@ function playIfValidMove()
 				}
 				else
 				{
-					if(allLegalMovesWhite[0].includes(moveEndId))
+					if(allLegalMovesBlack[0].includes(moveEndId))
 					{
 						otherPiece = document.querySelector("[pieceId='" + 0 + "']");
 						if(!(startRank === Math.floor(Number(otherPiece.parentNode.getAttribute("squareId")) / numRanks)))
@@ -2505,7 +2505,7 @@ function playIfValidMove()
 			{
 				if(moveStartPieceId === 25)
 				{
-					if(allLegalMovesWhite[30].includes(moveEndId))
+					if(allLegalMovesWhite[30 - 16].includes(moveEndId))
 					{
 						otherPiece = document.querySelector("[pieceId='" + 30 + "']");
 						if(!(startRank === Math.floor(Number(otherPiece.parentNode.getAttribute("squareId")) / numRanks)))
@@ -2521,7 +2521,7 @@ function playIfValidMove()
 				}
 				else
 				{
-					if(allLegalMovesWhite[25].includes(moveEndId))
+					if(allLegalMovesWhite[25 - 16].includes(moveEndId))
 					{
 						otherPiece = document.querySelector("[pieceId='" + 25 + "']");
 						if(!(startRank === Math.floor(Number(otherPiece.parentNode.getAttribute("squareId")) / numRanks)))
@@ -2540,7 +2540,7 @@ function playIfValidMove()
 			{
 				if(moveStartPieceId === 1)
 				{
-					if(allLegalMovesWhite[6].includes(moveEndId))
+					if(allLegalMovesBlack[6].includes(moveEndId))
 					{
 						otherPiece = document.querySelector("[pieceId='" + 6 + "']");
 						if(!(startRank === Math.floor(Number(otherPiece.parentNode.getAttribute("squareId")) / numRanks)))
@@ -2556,7 +2556,7 @@ function playIfValidMove()
 				}
 				else
 				{
-					if(allLegalMovesWhite[1].includes(moveEndId))
+					if(allLegalMovesBlack[1].includes(moveEndId))
 					{
 						otherPiece = document.querySelector("[pieceId='" + 1 + "']");
 						if(!(startRank === Math.floor(Number(otherPiece.parentNode.getAttribute("squareId")) / numRanks)))
@@ -2837,15 +2837,6 @@ async function fetchGameMoves()
 
 function dragStart(e)
 {
-	fetchGameMoves()
-		.then((moves) => 
-		{
-			if (moves)
-			{
-				console.log(moves);
-			}
-		});
-	
 	moveStartId = Number(e.target.parentNode.getAttribute("squareId"));
 	moveStartPiece = e.target;
 	
@@ -2876,6 +2867,28 @@ function dragOver(e)
 function dragDrop(e)
 {
 	e.stopPropagation();
+	fetchGameMoves()
+		.then((moves) => 
+		{
+			if (moves)
+			{
+				console.log(moves)
+				if((moves.length % 2) === 0)
+				{
+					if(colorTurn === "black")
+					{
+						return;
+					}
+				}
+				else
+				{
+					if(colorTurn === "white")
+					{
+						return;
+					}
+				}
+			}
+		});
 	if(e.target.children[0])
 	{
 		moveEndId = Number(e.target.parentNode.getAttribute("squareId"));
