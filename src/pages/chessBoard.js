@@ -2836,7 +2836,7 @@ async function fetchGameMoves(gameID)
 
 function dragStart(e)
 {
-	fetchGameMoves(gameID)
+	fetchGameMoves(1)
 		.then((moves) => 
 		{
 			if (moves)
