@@ -198,7 +198,7 @@ function readCookie() {
             ref={inputPassRef} // *
           />
           <button
-            className={styles.popupimghidepassword}
+            className={`${styles.popupimghidepassword} ${styles.shrink}`}
             id="viewPassButton"
             onClick={onPopupImgHidePasswordClick}
           />
@@ -217,7 +217,7 @@ function readCookie() {
           </b>
         </div>
         <button
-          className={styles.popupbuttonlogin}
+          className={`${styles.popupbuttonlogin} ${styles.grow}`}
           id="buttonLogin"
           onClick={onPopupButtonLoginClick}
         >
