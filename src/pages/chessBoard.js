@@ -2816,7 +2816,7 @@ async function pushGameMoves(move)
 	}
 }
 
-async function fetchGameMoves(gameID)
+async function fetchGameMoves()
 {
 	try
 	{
