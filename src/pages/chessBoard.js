@@ -9,7 +9,7 @@ const endOfFile = 56;
 var gameID;
 var currentMoves;
 var isSendingMove;
-var movesRecieved;
+var move;
 var playerColor = true;
 var moveStartPiece;
 var moveStartId;
@@ -3507,6 +3507,7 @@ function dragDrop(e)
 					if(colorTurn === "black")
 					{
 						isSendingMove = false;
+						move = moves[moves.length - 1]
 					}
 					else
 					{
@@ -3518,6 +3519,7 @@ function dragDrop(e)
 					if(colorTurn === "white")
 					{
 						isSendingMove = false;
+						move = moves[moves.length - 1]
 					}
 					else
 					{
