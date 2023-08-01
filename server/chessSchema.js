@@ -32,7 +32,7 @@ friendSchema.index({ username: 1 });
 
 // Game Schema
 const gameSchema = new mongoose.Schema({
-  gameID: { type: Number, unique: true },
+  gameID: Number,
   game: [String],
   players: [String],
   color: String,  // true represents White, false represents Black
