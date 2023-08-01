@@ -55,7 +55,7 @@ const AboutTablet = () => {
         <div className={styles.content1}>
           <div className={styles.content1divider} />
           <div className={styles.content1textgrouptitle}>
-            Group 16’s Large Project for the University of Central Florida’s
+            Group 17’s Large Project for the University of Central Florida’s
             software development course, Processes of Object-Oriented Software
             Development.
           </div>
