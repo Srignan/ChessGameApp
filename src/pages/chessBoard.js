@@ -2800,7 +2800,7 @@ async function pushGameMoves(gameID, move)
 {
 	try
 	{
-		const response = await fetch('/api/games/' + gameID + '/moves', {method: 'POST', headers: {'Content-Type': 'application/json',}, body: JSON.stringify({ move }),});
+		const response = await fetch('/api/games/' + gameID + '/moves', {method: 'POST', body: move,});
 		if (!response.ok)
 		{
 			throw new Error("Failed to push game moves");
