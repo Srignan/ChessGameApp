@@ -97,6 +97,11 @@ function readCookie() {
     errorsRef.current.textContent = "";
 
     // Perform login validation here.
+    if ((email == "") || (password == ""))
+    {
+      errorsRef.current.textContent = "Fields cannot be left blank.";
+      return;
+    }
 
     fetch('/api/auth/login', {
       method: 'POST',
@@ -110,6 +115,7 @@ function readCookie() {
           return response.json();
         } else {
           throw new Error('Server error logging in; please try again later.');
+          errorsRef.current.textContent = "Invalid username or password.";
         }
       })
       .then((data) => {
@@ -121,11 +127,13 @@ function readCookie() {
           navigate("/landing");
         } else {
           throw new Error('Login failed.');
+          errorsRef.current.textContent = "Invalid username or password.";
         }
       })
       .catch((error) => {
         console.error('Error:', error);
         throw new Error('There was a server error; please try again later.');
+        errorsRef.current.textContent = "Invalid username or password.";
       });
   }, [navigate]); // *
 
