@@ -2575,7 +2575,7 @@ function playIfValidMove()
 		move += fileToLetter(file);
 		move += String(rank);
 
-		pushGameMoves(move);
+		pushGameMoves(gameID, move);
 		
 		changeColorTurn();
 		progressEnPassant();
@@ -2796,7 +2796,7 @@ function toWhiteBoardPOV()
 	});
 }
 
-async function pushGameMoves(move)
+async function pushGameMoves(gameID, move)
 {
 	try
 	{
@@ -2815,7 +2815,7 @@ async function pushGameMoves(move)
 	}
 }
 
-async function fetchGameMoves()
+async function fetchGameMoves(gameID)
 {
 	try
 	{
@@ -2836,7 +2836,7 @@ async function fetchGameMoves()
 
 function dragStart(e)
 {
-	fetchGameMoves()
+	fetchGameMoves(gameID)
 		.then((moves) => 
 		{
 			if (moves)
