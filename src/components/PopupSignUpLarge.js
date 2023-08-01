@@ -49,6 +49,57 @@ const PopupSignUpLarge = ({ onClose }) => {
     console.log("confirmPassword is " + confirmPassword);
 
     // Perform all validation/error messages.
+    if ((username == "") || (email == "") || (password == "") || (confirmPassword == ""))
+    {
+      errorsRef.current.textContent = "Fields cannot be left blank.";
+      return;
+    }
+
+    // Username validation
+    if (username.length < 3 || username.length > 18 || ) {
+      errorsRef.current.textContent = "Username must be between 3 and 18 characters.";
+      return;
+    }
+
+    if (/[^a-zA-Z0-9]/.test(username))
+    {
+      errorsRef.current.textContent = "Username can't contain special symbols.";
+      return;
+    }
+    
+    // Email validation
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      errorsRef.current.textContent = "Please enter a valid email address.";
+      return;
+    }
+    
+    // Password validation
+    if (password.length < 8) {
+      errorsRef.current.textContent = "Password must be at least 8 characters long.";
+      return;
+    }
+    
+    if (!/[A-Z]/.test(password)) {
+      errorsRef.current.textContent = "Password must contain at least one uppercase letter.";
+      return;
+    }
+    
+    if (!/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
+      errorsRef.current.textContent = "Password must contain at least one special symbol.";
+      return;
+    }
+    
+    if (!/[0-9]/.test(password)) {
+      errorsRef.current.textContent = "Password must contain at least one number.";
+      return;
+    }
+    
+    // Confirm password
+    if (password !== confirmPassword) {
+      errorsRef.current.textContent = "Passwords do not match.";
+      return;
+    }
+    
     // validateLogin(username, email, password, confirmPassword);
 
     // Reset the errors before the fetch calls
