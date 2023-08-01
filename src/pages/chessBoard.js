@@ -3526,19 +3526,19 @@ function dragDrop(e)
 						isSendingMove = true;
 					}
 				}
-			}
-			if(e.target.children[0])
-			{
-				moveEndId = Number(e.target.parentNode.getAttribute("squareId"));
-				moveEndSquare = e.target.parentNode;
-			}
-			else
-			{
-				moveEndId = Number(e.target.getAttribute("squareId"));
-				moveEndSquare = e.target;
-			}
-			hideLegalMoves();
-			playIfValidMove();
+				if(e.target.children[0])
+				{
+					moveEndId = Number(e.target.parentNode.getAttribute("squareId"));
+					moveEndSquare = e.target.parentNode;
+				}
+				else
+				{
+					moveEndId = Number(e.target.getAttribute("squareId"));
+					moveEndSquare = e.target;
+				}
+				hideLegalMoves();
+				playIfValidMove();
+				}
 		});
 }
 
