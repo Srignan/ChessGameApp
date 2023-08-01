@@ -143,24 +143,27 @@ const FriendSearchComputer = () => {
                   >
                     {friend.username}
                   </b>
-                  <div className={styles.cardelo}>({friend.elo})</div> {/* Display the friend's ELO */}
+                  <div className={styles.cardelo}>
+                      ({friend.elo}) {/* Display the friend's ELO */}
+                  </div>
+                </div>
+                <div className={styles.cardbuttons}>
+                  <button
+                    className={styles.cardbuttonunfriend}
+                    onClick={onCardButtonUnfriendClick}
+                  >
+                    <b className={styles.buttoncanceltext}>Unfriend</b>
+                  </button>
+                  <button
+                    className={styles.cardbuttonplaygame}
+                    onClick={onCardButtonPlayGameClick}
+                  >
+                    <b className={styles.actionsptext}>Play a Game</b>
+                  </button>
                 </div>
               </div>
-            <div className={styles.cardbuttons}>
-              <button
-                className={styles.cardbuttonunfriend}
-                onClick={onCardButtonUnfriendClick}
-              >
-                <b className={styles.buttoncanceltext}>Unfriend</b>
-              </button>
-              <button
-                className={styles.cardbuttonplaygame}
-                onClick={onCardButtonPlayGameClick}
-              >
-                <b className={styles.actionsptext}>Play a Game</b>
-              </button>
             </div>
-          </div>
+          ))}
         </div>
         <div className={styles.content3} />
         <div className={styles.footer}>
