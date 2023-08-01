@@ -2403,7 +2403,7 @@ function playIfValidMove()
 			}
 		}
 
-		let move = "";
+		/*let move = "";
 		let otherPiece;
 		let moveStartPieceId = Number(moveStartPiece.getAttribute("pieceId"));
 		let startRank = Math.floor(moveStartId / numRanks);
@@ -2627,7 +2627,7 @@ function playIfValidMove()
 		move += String(rank);
 		let moves = [move];
 
-		pushGameMoves(moves);
+		pushGameMoves(moves);*/
 		
 		changeColorTurn();
 		progressEnPassant();
@@ -2672,7 +2672,7 @@ function playIfValidMove()
 	}
 	else
 	{
-		let pieceChar;
+		/*let pieceChar;
 		let extraChar;
 		let piece;
 		let startRank;
@@ -3214,7 +3214,7 @@ function playIfValidMove()
 				handleCheck(blackKingSquareId);
 			}
 		}
-	}
+	*/}
 }
 
 function fileToLetter(fileNumber)
@@ -3495,7 +3495,7 @@ function dragOver(e)
 
 function dragDrop(e)
 {
-	e.stopPropagation();
+	/*e.stopPropagation();
 	fetchGameMoves()
 		.then((moves) => 
 		{
@@ -3575,7 +3575,19 @@ function dragDrop(e)
 					}
 				}
 			}
-		});
+		});*/
+	if(e.target.children[0])
+	{
+		moveEndId = Number(e.target.parentNode.getAttribute("squareId"));
+		moveEndSquare = e.target.parentNode;
+	}
+	else
+	{
+		moveEndId = Number(e.target.getAttribute("squareId"));
+		moveEndSquare = e.target;
+	}
+	hideLegalMoves();
+	playIfValidMove();
 }
 
 /*document.addEventListener("DOMContentLoaded", function ()
