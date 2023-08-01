@@ -56,7 +56,7 @@ const PopupSignUpLarge = ({ onClose }) => {
     }
 
     // Username validation
-    if (username.length < 3 || username.length > 18 || ) {
+    if (username.length < 3 || username.length > 18) {
       errorsRef.current.textContent = "Username must be between 3 and 18 characters.";
       return;
     }
