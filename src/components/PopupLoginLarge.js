@@ -116,7 +116,8 @@ function readCookie() {
         if (data.message) {
           console.log('User logged in successfully!');
           // Save cookie
-          saveCookie();
+          const { username, rating } = data.user;
+          saveCookie(username, rating);
           navigate("/landing");
         } else {
           throw new Error('Login failed.');
