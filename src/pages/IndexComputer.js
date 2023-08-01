@@ -134,7 +134,7 @@ const IndexComputer = () => {
             src="/content2imghow1@2x.png"
           />
           <button
-            className={styles.content2buttonhow}
+            className={`${styles.content2buttonhow} ${styles.grow}`}
             onClick={onContent2ButtonHowClick}
           >
             <span className={styles.content2buttontext}>
@@ -146,7 +146,7 @@ const IndexComputer = () => {
         </div>
         <div className={styles.content3}>
           <button
-            className={styles.content3buttonmeet}
+            className={`${styles.content3buttonmeet} ${styles.grow}`}
             onClick={onContent3ButtonMeetClick}
           >
             <b className={styles.content3buttontext}>Meet the Team</b>
@@ -271,34 +271,34 @@ const IndexComputer = () => {
         </div>
         <div className={styles.footer}>
           <button
-            className={styles.footerimggithub}
+            className={`${styles.footerimggithub} ${styles.grow}`}
             onClick={onFooterImgGitHubClick}
           />
           <div className={styles.footertextcopyright}>
             © 2023 FullStack Bros. All rights reserved.
           </div>
           <button
-            className={styles.footerbuttonback}
+            className={`${styles.footerbuttonback} ${styles.grow}`}
             onClick={onFooterButtonBackClick}
           >
             <b className={styles.footerbuttontext}>Back to Top</b>
           </button>
           <button
-            className={styles.footerimgdiscord}
+            className={`${styles.footerimgdiscord} ${styles.grow}`}
             onClick={onFooterImgDiscordClick}
           />
         </div>
         <nav className={styles.navcomputerso} data-scroll-to="navComputerSO">
           <div className={styles.navbarbackground} />
           <button
-            className={styles.navbuttonplay}
+            className={`${styles.navbuttonplay} ${styles.grow}`}
             id="navButtonLogin"
             onClick={openPopupLoginLarge1}
           >
             <b className={styles.navplaytext}>Play Now!</b>
           </button>
           <button
-            className={styles.navbuttonsign}
+            className={`${styles.navbuttonsign} ${styles.grow}`}
             id="navButtonSignUp"
             onClick={openPopupSignUpLarge}
           >
@@ -318,7 +318,7 @@ const IndexComputer = () => {
           </b>
           <div className={styles.pageselectlogo} />
           <img
-            className={styles.navlogoIcon}
+            className={`${styles.navlogoIcon} ${styles.shrink}`}
             alt=""
             src="/navlogo2@2x.png"
             onClick={onNavLogoImageClick}
