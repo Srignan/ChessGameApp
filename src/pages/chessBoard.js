@@ -2255,8 +2255,8 @@ function findLegalMoves()
 
 function playIfValidMove()
 {
-	if(isSendingMove)
-	{
+	/*if(isSendingMove)
+	{*/
 		let rookMoveId;
 		let rookMoveSquare;
 		let rookPiece;
@@ -2669,10 +2669,10 @@ function playIfValidMove()
 				handleCheck(blackKingSquareId);
 			}
 		}
-	}
+	/*}
 	else
 	{
-		/*let pieceChar;
+		let pieceChar;
 		let extraChar;
 		let piece;
 		let startRank;
@@ -3214,7 +3214,7 @@ function playIfValidMove()
 				handleCheck(blackKingSquareId);
 			}
 		}
-	*/}
+	}*/
 }
 
 function fileToLetter(fileNumber)
