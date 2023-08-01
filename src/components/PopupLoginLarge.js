@@ -40,7 +40,7 @@ const PopupLoginLarge = ({ onClose }) => {
     const email = inputUserEmailRef.current.value;
     const password = inputPassRef.current.value;
 
-    console.log("Email: " + usernameOrEmail);
+    console.log("Email: " + email);
     console.log("Password is: " + password);
 
     // Reset the errors before the fetch calls
