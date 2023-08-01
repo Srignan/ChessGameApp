@@ -136,7 +136,7 @@ function readCookie() {
     if (cookieData) {
       // Extract username and rating from the cookie data
       const { username, rating } = cookieData;
-      console.log("Cookie read successful. Username is " + username + " and rating is " + rating ".");
+      console.log("Cookie read successful. Username is " + username + " and rating is " + rating + ".");
       // Now you have the username and rating in separate variables,
       // you can use them as needed in your component or application logic.
     } else {
