@@ -119,6 +119,7 @@ const LandingComputer = () => {
 
 // Ref for the welcome messages.
   const welcomeRef = useRef("");
+  const headerRef = useRef("");
 
 // Function to clear the cookie and navigate to the homepage
 function logout() {
@@ -140,6 +141,7 @@ useEffect(() => {
 
       // Update welcome message
       welcomeRef.current.textContent = "Welcome, " + username + "!";
+      headerRef.current.textContent = username;
     } else {
       // Cookie not found or error reading it
       console.log("Cookie read unsuccessful.");
@@ -246,7 +248,7 @@ useEffect(() => {
                 src="/navprofilepic@2x.png"
               />
               <div className={styles.navelo}>(0)</div>
-              <b className={styles.navusername}>Username</b>
+              <b ref={welcomeRef} className={styles.navusername}>Username</b>
             </div>
             <div className={styles.pageselectcontact} />
             <b className={styles.navcontact} onClick={onNavContactTextClick}>
