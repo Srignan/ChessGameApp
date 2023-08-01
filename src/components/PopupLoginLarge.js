@@ -37,10 +37,10 @@ const PopupLoginLarge = ({ onClose }) => {
     console.log("Attempting to log in.");
     
     
-    const usernameOrEmail = inputUserEmailRef.current.value;
+    const email = inputUserEmailRef.current.value;
     const password = inputPassRef.current.value;
 
-    console.log("Username or email is: " + usernameOrEmail);
+    console.log("Email: " + usernameOrEmail);
     console.log("Password is: " + password);
 
     // Reset the errors before the fetch calls
@@ -53,7 +53,7 @@ const PopupLoginLarge = ({ onClose }) => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ usernameOrEmail, password }),
+      body: JSON.stringify({ email, password }),
       })
       .then((response) => {
         if (response.ok) {
