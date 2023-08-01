@@ -31,7 +31,7 @@ const PopupForgotLarge = ({ onClose }) => {
           <b className={styles.popuptexttitleforgot}>Forgot Password?</b>
         </div>
         <button
-          className={styles.popupimgclosebutton}
+          className={`${styles.popupimgclosebutton} ${styles.shrink}`}
           id="closeButton"
           onClick={onClose}
         />
@@ -60,14 +60,14 @@ const PopupForgotLarge = ({ onClose }) => {
         </div>
         <div className={styles.popupforgotbuttons}>
           <button
-            className={styles.popupbuttonforgotback}
+            className={`${styles.popupbuttonforgotback} ${styles.grow}`}
             id="buttonGoBack"
             onClick={openPopupLoginLarge}
           >
             <b className={styles.popupbuttongobacktext}>Go Back</b>
           </button>
           <button
-            className={styles.popupbuttonforgotsend}
+            className={`${styles.popupbuttonforgotsend} ${styles.grow}`}
             id="buttonSendEmail"
             onClick={openPopupNoAPI}
           >
