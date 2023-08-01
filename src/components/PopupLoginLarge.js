@@ -114,8 +114,8 @@ function readCookie() {
         if (response.ok) {
           return response.json();
         } else {
-          throw new Error('Server error logging in; please try again later.');
           errorsRef.current.textContent = "Invalid username or password.";
+          throw new Error('Server error logging in; please try again later.');
         }
       })
       .then((data) => {
@@ -131,9 +131,8 @@ function readCookie() {
         }
       })
       .catch((error) => {
-        console.error('Error:', error);
-        throw new Error('There was a server error; please try again later.');
         errorsRef.current.textContent = "Invalid username or password.";
+        throw new Error('There was a server error; please try again later.');
       });
   }, [navigate]); // *
 
