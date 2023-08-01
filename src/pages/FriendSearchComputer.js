@@ -1,5 +1,6 @@
 import { useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios"; // * Added axios for HTTP requests
 import SideBarDrop from "../components/SideBarDrop";
 import PortalDrawer from "../components/PortalDrawer";
 import styles from "./FriendSearchComputer.module.css";
@@ -7,12 +8,24 @@ const FriendSearchComputer = () => {
   const navigate = useNavigate();
   const [isSideBarDropOpen, setSideBarDropOpen] = useState(false);
 
+  const [friendsList, setFriendsList] = useState([]); // * Added state for friends list
+
   const onButtonFindUserClick = useCallback(() => {
     navigate("/usersearch");
   }, [navigate]);
 
-  const onFormSearchButtonClick = useCallback(() => {
-    window.open("https://www.google.com/");
+  const onFormSearchButtonClick = useCallback(() => { // * Updated this function for searching friends
+    const inputSearch = document.getElementById('inputSearch').value;
+    
+    axios.get(`/api/friends/search?query=${inputSearch}`)
+      .then((response) => {
+        // Update the state with the fetched friends list
+        setFriendsList(response.data.friends);
+      })
+      .catch((error) => {
+        // Handle the error here
+        console.error(error);
+      });
   }, []);
 
   const onButtonReturnHomeClick = useCallback(() => {
@@ -116,22 +129,23 @@ const FriendSearchComputer = () => {
           </button>
         </div>
         <div className={styles.content2}>
-          <div className={styles.cardfriend}>
-            <div className={styles.carduserinfo}>
-              <button
-                className={styles.cardavatar}
-                onClick={onCardAvatarClick}
-              />
-              <div className={styles.cardtext}>
-                <b
-                  className={styles.cardusername}
-                  onClick={onCardUsernameTextClick}
-                >
-                  Username
-                </b>
-                <div className={styles.cardelo}>(0)</div>
+          {friendsList.length > 0 && friendsList.map((friend, index) => ( // * Render the fetched friends list
+            <div className={styles.cardfriend} key={index}>
+              <div className={styles.carduserinfo}>
+                <button
+                  className={styles.cardavatar}
+                  onClick={() => navigate(`/profile/${friend.username}`)} // * Added navigation to the friend's profile
+                />
+                <div className={styles.cardtext}>
+                  <b
+                    className={styles.cardusername}
+                    onClick={() => navigate(`/profile/${friend.username}`)} // * Added navigation to the friend's profile
+                  >
+                    {friend.username}
+                  </b>
+                  <div className={styles.cardelo}>({friend.elo})</div> // * Display the friend's ELO
+                </div>
               </div>
-            </div>
             <div className={styles.cardbuttons}>
               <button
                 className={styles.cardbuttonunfriend}
