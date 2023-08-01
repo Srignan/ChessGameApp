@@ -8,7 +8,7 @@ const endOfRank = 7;
 const endOfFile = 56;
 var gameID;
 var currentMoves;
-var isSendingMove = true;
+var isSendingMove;
 var movesRecieved;
 var playerColor = true;
 var moveStartPiece;
@@ -2412,6 +2412,8 @@ function playIfValidMove()
 		let file = moveEndId % numFiles;
 		let newRank;
 		let newFile;
+		let firstPiece = '';
+		let k;
 		if(moveStartPiece.id.includes("King"))
 		{
 			move += "K";
@@ -2572,6 +2574,55 @@ function playIfValidMove()
 				}
 			}
 		}
+		else
+		{
+			if(moveStartPiece.id.includes("white"))
+			{
+				for(k = 0; k < 8; k++)
+				{
+					if(k === (moveStartPieceId - 16))
+					{
+						continue;
+					}
+					if(allLegalMovesWhite[k].includes(moveEndId))
+					{
+						otherPiece = document.querySelector("[pieceId='" + k + "']");
+						if(!(startRank === Math.floor(Number(otherPiece.parentNode.getAttribute("squareId")) / numRanks)))
+						{
+							newRank = startRank + 1
+							move += String(newRank);
+						}
+						else
+						{
+							move += fileToLetter(startFile);
+						}
+					}
+				}
+			}
+			else
+			{
+				for(k = 8; k < 16; k++)
+				{
+					if(k === (moveStartPieceId))
+					{
+						continue;
+					}
+					if(allLegalMovesWhite[k].includes(moveEndId))
+					{
+						otherPiece = document.querySelector("[pieceId='" + k + "']");
+						if(!(startRank === Math.floor(Number(otherPiece.parentNode.getAttribute("squareId")) / numRanks)))
+						{
+							newRank = startRank + 1
+							move += String(newRank);
+						}
+						else
+						{
+							move += fileToLetter(startFile);
+						}
+					}
+				}
+			}
+		}
 		move += fileToLetter(file);
 		move += String(rank);
 		let moves = [move];
@@ -2621,7 +2672,548 @@ function playIfValidMove()
 	}
 	else
 	{
+		let pieceChar;
+		let extraChar;
+		let piece;
+		let startRank;
+		let startFile;
+		let rank;
+		let file;
+		let squareId;
+		let l;
+	
+		if(colorTurn === "white")
+		{
+			pieceChar = move.substring(0,1)
+			if(move.length === 2)
+			{
+				file = letterToFile(move.substring(0,1));
+				rank = Number(move.substring(1)) - 1;
+				squareId = file + (8 * rank);
+				for(l = 0; l < 8; l++)
+				{
+					if(allLegalMovesWhite[l].includes(squareId))
+					{
+						piece = document.querySelector("[pieceId='" + Number(l + 16) + "']");
+					}
+				}
+			}
+			else if(pieceChar === "K")
+			{
+				file = letterToFile(move.substring(1,2));
+				rank = Number(move.substring(2)) - 1;
+				squareId = file + (8 * rank);
+				piece = document.querySelector("[pieceId='" + 28 + "']");
+			}
+			else if(pieceChar === "Q")
+			{
+				file = letterToFile(move.substring(1,2));
+				rank = Number(move.substring(2)) - 1;
+				squareId = file + (8 * rank);
+				piece = document.querySelector("[pieceId='" + 27 + "']");
+			}
+			else if(pieceChar === "R")
+			{
+				if(move.length === 4)
+				{
+					extraChar = move.substring(1,2)
+					file = letterToFile(move.substring(2,3));
+					rank = Number(move.substring(3)) - 1;
+					squareId = file + (8 * rank);
+					if(extraChar >= '1' && extraChar <= '8')
+					{
+						startRank = Number(extraChar) - 1;
+						piece = document.querySelector("[pieceId='" + 24 + "']");
+						if(!(Math.floor(Number(piece.parentNode.getAttribute("squareId")) / numRanks) === startRank))
+						{
+							piece = document.querySelector("[pieceId='" + 31 + "']");
+						}
+					}
+					else
+					{
+						startFile = letterToFile(extraChar);
+						piece = document.querySelector("[pieceId='" + 24 + "']");
+						if(!((Number(piece.parentNode.getAttribute("squareId")) % numFiles) === startFile))
+						{
+							piece = document.querySelector("[pieceId='" + 31 + "']");
+						}
+					}
+				}
+				else
+				{
+					file = letterToFile(move.substring(1,2));
+					rank = Number(move.substring(2)) - 1;
+					squareId = file + (8 * rank);
+					if(allLegalMovesWhite[24 - 16].includes(squareId))
+					{
+						piece = document.querySelector("[pieceId='" + 24 + "']");
+					}
+					else
+					{
+						piece = document.querySelector("[pieceId='" + 31 + "']");
+					}
+				}
+			}
+			else if(pieceChar === "B")
+			{
+				if(move.length === 4)
+				{
+					extraChar = move.substring(1,2)
+					file = letterToFile(move.substring(2,3));
+					rank = Number(move.substring(3)) - 1;
+					squareId = file + (8 * rank);
+					if(extraChar >= '1' && extraChar <= '8')
+					{
+						startRank = Number(extraChar) - 1;
+						piece = document.querySelector("[pieceId='" + 26 + "']");
+						if(!(Math.floor(Number(piece.parentNode.getAttribute("squareId")) / numRanks) === startRank))
+						{
+							piece = document.querySelector("[pieceId='" + 29 + "']");
+						}
+					}
+					else
+					{
+						startFile = letterToFile(extraChar);
+						piece = document.querySelector("[pieceId='" + 26 + "']");
+						if(!((Number(piece.parentNode.getAttribute("squareId")) % numFiles) === startFile))
+						{
+							piece = document.querySelector("[pieceId='" + 29 + "']");
+						}
+					}
+				}
+				else
+				{
+					file = letterToFile(move.substring(1,2));
+					rank = Number(move.substring(2)) - 1;
+					squareId = file + (8 * rank);
+					if(allLegalMovesWhite[26 - 16].includes(squareId))
+					{
+						piece = document.querySelector("[pieceId='" + 26 + "']");
+					}
+					else
+					{
+						piece = document.querySelector("[pieceId='" + 29 + "']");
+					}
+				}
+			}
+			else if(pieceChar === "N")
+			{
+				if(move.length === 4)
+				{
+					extraChar = move.substring(1,2)
+					file = letterToFile(move.substring(2,3));
+					rank = Number(move.substring(3)) - 1;
+					squareId = file + (8 * rank);
+					if(extraChar >= '1' && extraChar <= '8')
+					{
+						startRank = Number(extraChar) - 1;
+						piece = document.querySelector("[pieceId='" + 25 + "']");
+						if(!(Math.floor(Number(piece.parentNode.getAttribute("squareId")) / numRanks) === startRank))
+						{
+							piece = document.querySelector("[pieceId='" + 30 + "']");
+						}
+					}
+					else
+					{
+						startFile = letterToFile(extraChar);
+						piece = document.querySelector("[pieceId='" + 25 + "']");
+						if(!((Number(piece.parentNode.getAttribute("squareId")) % numFiles) === startFile))
+						{
+							piece = document.querySelector("[pieceId='" + 30 + "']");
+						}
+					}
+				}
+				else
+				{
+					file = letterToFile(move.substring(1,2));
+					rank = Number(move.substring(2)) - 1;
+					squareId = file + (8 * rank);
+					if(allLegalMovesWhite[25 - 16].includes(squareId))
+					{
+						piece = document.querySelector("[pieceId='" + 25 + "']");
+					}
+					else
+					{
+						piece = document.querySelector("[pieceId='" + 30 + "']");
+					}
+				}
+			}
+			else
+			{
+				extraChar = move.substring(0,1)
+				file = letterToFile(move.substring(1,2));
+				rank = Number(move.substring(2)) - 1;
+				squareId = file + (8 * rank);
+				startFile = letterToFile(extraChar);
+				for(l = 0; l < 8; l++)
+				{
+					piece = document.querySelector("[pieceId='" + Number(l + 16) + "']");
+					if(((Number(piece.parentNode.getAttribute("squareId")) % numFiles) === startFile))
+					{
+						break;
+					}
+				}
+			}
+		}
+		else
+		{
+			pieceChar = move.substring(0,1)
+			if(move.length === 2)
+			{
+				file = letterToFile(move.substring(0,1));
+				rank = Number(move.substring(1)) - 1;
+				squareId = file + (8 * rank);
+				for(l = 8; l < 16; l++)
+				{
+					if(allLegalMovesBlack[l].includes(squareId))
+					{
+						piece = document.querySelector("[pieceId='" + l + "']");
+					}
+				}
+			}
+			else if(pieceChar === "K")
+			{
+				file = letterToFile(move.substring(1,2));
+				rank = Number(move.substring(2)) - 1;
+				squareId = file + (8 * rank);
+				piece = document.querySelector("[pieceId='" + 4 + "']");
+			}
+			else if(pieceChar === "Q")
+			{
+				file = letterToFile(move.substring(1,2));
+				rank = Number(move.substring(2)) - 1;
+				squareId = file + (8 * rank);
+				piece = document.querySelector("[pieceId='" + 3 + "']");
+			}
+			else if(pieceChar === "R")
+			{
+				if(move.length === 4)
+				{
+					extraChar = move.substring(1,2)
+					file = letterToFile(move.substring(2,3));
+					rank = Number(move.substring(3)) - 1;
+					squareId = file + (8 * rank);
+					if(extraChar >= '1' && extraChar <= '8')
+					{
+						startRank = Number(extraChar) - 1;
+						piece = document.querySelector("[pieceId='" + 0 + "']");
+						if(!(Math.floor(Number(piece.parentNode.getAttribute("squareId")) / numRanks) === startRank))
+						{
+							piece = document.querySelector("[pieceId='" + 7 + "']");
+						}
+					}
+					else
+					{
+						startFile = letterToFile(extraChar);
+						piece = document.querySelector("[pieceId='" + 0 + "']");
+						if(!((Number(piece.parentNode.getAttribute("squareId")) % numFiles) === startFile))
+						{
+							piece = document.querySelector("[pieceId='" + 7 + "']");
+						}
+					}
+				}
+				else
+				{
+					file = letterToFile(move.substring(1,2));
+					rank = Number(move.substring(2)) - 1;
+					squareId = file + (8 * rank);
+					if(allLegalMovesBlack[0].includes(squareId))
+					{
+						piece = document.querySelector("[pieceId='" + 0 + "']");
+					}
+					else
+					{
+						piece = document.querySelector("[pieceId='" + 7 + "']");
+					}
+				}
+			}
+			else if(pieceChar === "B")
+			{
+				if(move.length === 4)
+				{
+					extraChar = move.substring(1,2)
+					file = letterToFile(move.substring(2,3));
+					rank = Number(move.substring(3)) - 1;
+					squareId = file + (8 * rank);
+					if(extraChar >= '1' && extraChar <= '8')
+					{
+						startRank = Number(extraChar) - 1;
+						piece = document.querySelector("[pieceId='" + 2 + "']");
+						if(!(Math.floor(Number(piece.parentNode.getAttribute("squareId")) / numRanks) === startRank))
+						{
+							piece = document.querySelector("[pieceId='" + 5 + "']");
+						}
+					}
+					else
+					{
+						startFile = letterToFile(extraChar);
+						piece = document.querySelector("[pieceId='" + 2 + "']");
+						if(!((Number(piece.parentNode.getAttribute("squareId")) % numFiles) === startFile))
+						{
+							piece = document.querySelector("[pieceId='" + 5 + "']");
+						}
+					}
+				}
+				else
+				{
+					file = letterToFile(move.substring(1,2));
+					rank = Number(move.substring(2)) - 1;
+					squareId = file + (8 * rank);
+					if(allLegalMovesBlack[2].includes(squareId))
+					{
+						piece = document.querySelector("[pieceId='" + 2 + "']");
+					}
+					else
+					{
+						piece = document.querySelector("[pieceId='" + 5 + "']");
+					}
+				}
+			}
+			else if(pieceChar === "N")
+			{
+				if(move.length === 4)
+				{
+					extraChar = move.substring(1,2)
+					file = letterToFile(move.substring(2,3));
+					rank = Number(move.substring(3)) - 1;
+					squareId = file + (8 * rank);
+					if(extraChar >= '1' && extraChar <= '8')
+					{
+						startRank = Number(extraChar) - 1;
+						piece = document.querySelector("[pieceId='" + 1 + "']");
+						if(!(Math.floor(Number(piece.parentNode.getAttribute("squareId")) / numRanks) === startRank))
+						{
+							piece = document.querySelector("[pieceId='" + 6 + "']");
+						}
+					}
+					else
+					{
+						startFile = letterToFile(extraChar);
+						piece = document.querySelector("[pieceId='" + 1 + "']");
+						if(!((Number(piece.parentNode.getAttribute("squareId")) % numFiles) === startFile))
+						{
+							piece = document.querySelector("[pieceId='" + 6 + "']");
+						}
+					}
+				}
+				else
+				{
+					file = letterToFile(move.substring(1,2));
+					rank = Number(move.substring(2)) - 1;
+					squareId = file + (8 * rank);
+					if(allLegalMovesWhite[1].includes(squareId))
+					{
+						piece = document.querySelector("[pieceId='" + 1 + "']");
+					}
+					else
+					{
+						piece = document.querySelector("[pieceId='" + 6 + "']");
+					}
+				}
+			}
+			else
+			{
+				extraChar = move.substring(0,1)
+				file = letterToFile(move.substring(1,2));
+				rank = Number(move.substring(2)) - 1;
+				squareId = file + (8 * rank);
+				startFile = letterToFile(extraChar);
+				for(l = 8; l < 16; l++)
+				{
+					piece = document.querySelector("[pieceId='" + l + "']");
+					if(((Number(piece.parentNode.getAttribute("squareId")) % numFiles) === startFile))
+					{
+						break;
+					}
+				}
+			}
+		}
+		moveStartPiece = piece;
+		moveStartId = piece.parentNode.getAttribute("squareId");
+		moveEndSquare = document.querySelector("[squareId='" + squareId + "']");
+		moveEndId = squareId;
+
+		// If dropped back on starting square return or there are no legal moves
+		if((moveStartId === moveEndId) || (legalMoves === []))
+		{
+			clearEnPassantNew();
+			return;
+		}
+		// If a piece is on the target square run as capture
+		else if(moveEndSquare.children[0])
+		{
+			if(moveStartPiece.id.includes("white"))
+			{
+				if((colorTurn === "white") && legalMoves.includes(moveEndId))
+				{
+					if((moveStartPiece.id.includes("King") || moveStartPiece.id.includes("Rook")) && (Number(moveStartPiece.getAttribute("hasMoved")) === 0))
+					{
+						moveStartPiece.setAttribute("hasMoved", 1);
+					}
+					moveEndSquare.append(moveStartPiece);
+					moveEndSquare.children[0].remove();
+				}
+				else
+				{
+					return;
+				}
+			}
+			else
+			{
+				if((colorTurn === "black") && legalMoves.includes(moveEndId))
+				{
+					if((moveStartPiece.id.includes("King") || moveStartPiece.id.includes("Rook")) && (Number(moveStartPiece.getAttribute("hasMoved")) === 0))
+					{
+						moveStartPiece.setAttribute("hasMoved", 1);
+					}
+					moveEndSquare.append(moveStartPiece);
+					moveEndSquare.children[0].remove();
+				}
+				else
+				{
+					return;
+				}
+			}
+		}
+		// If the target square is empty run as normal move
+		else
+		{
+			if(moveStartPiece.id.includes("white"))
+			{
+				if((colorTurn === "white") && legalMoves.includes(moveEndId))
+				{
+					if((moveStartPiece.id.includes("King") || moveStartPiece.id.includes("Rook")) && (Number(moveStartPiece.getAttribute("hasMoved")) === 0))
+					{
+						moveStartPiece.setAttribute("hasMoved", 1);
+					}
+					if(moveStartPiece.id.includes("King"))
+					{
+						if((moveEndId - moveStartId) === 2)
+						{
+							rookPiece = document.querySelector("[pieceId='" + (15 + 16) + "']");
+							rookMoveId = moveEndId - 1;
+							rookMoveSquare = document.querySelector("[squareId='" + rookMoveId + "']");
+							rookMoveSquare.append(rookPiece);
+						}
+						else if((moveStartId - moveEndId) === 2)
+						{
+							rookPiece = document.querySelector("[pieceId='" + (8 + 16) + "']");
+							rookMoveId = moveEndId + 1;
+							rookMoveSquare = document.querySelector("[squareId='" + rookMoveId + "']");
+							rookMoveSquare.append(rookPiece);
+						}
+					}
+					if(moveEndSquare.hasAttribute("enPassantBlack") && (moveStartPiece.id.includes("Pawn")))
+					{
+						let capturedId = Number(moveEndSquare.getAttribute("squareId")) + moveDown;
+						let capturedSquare = document.querySelector("[squareId='" + capturedId + "']");
+						moveEndSquare.append(moveStartPiece);
+						capturedSquare.children[0].remove();
+					}
+					else
+					{
+						if(moveStartPiece.id.includes("Pawn") && ((moveDown * 2) === Math.abs(moveStartId - moveEndId)))
+						{
+							enPassantSquare = document.querySelector("[squareId='" + (moveEndId + moveDown) + "']");
+							enPassantSquare.setAttribute("enPassantWhite", 0);
+						}
+						moveEndSquare.append(moveStartPiece);
+					}
+				}
+				else
+				{
+					return;
+				}
+			}
+			else
+			{
+				if((colorTurn === "black") && legalMoves.includes(moveEndId))
+				{
+					if((moveStartPiece.id.includes("King") || moveStartPiece.id.includes("Rook")) && (Number(moveStartPiece.getAttribute("hasMoved")) === 0))
+					{
+						moveStartPiece.setAttribute("hasMoved", 1);
+					}
+					if(moveStartPiece.id.includes("King"))
+					{
+						if((moveEndId - moveStartId) === 2)
+						{
+							rookPiece = document.querySelector("[pieceId='" + 7 + "']");
+							rookMoveId = moveEndId - 1;
+							rookMoveSquare = document.querySelector("[squareId='" + rookMoveId + "']");
+							rookMoveSquare.append(rookPiece);
+						}
+						else if((moveStartId - moveEndId) === 2)
+						{
+							rookPiece = document.querySelector("[pieceId='" + 0 + "']");
+							rookMoveId = moveEndId + 1;
+							rookMoveSquare = document.querySelector("[squareId='" + rookMoveId + "']");
+							rookMoveSquare.append(rookPiece);
+						}
+					}
+					if(moveEndSquare.hasAttribute("enPassantWhite") && (moveStartPiece.id.includes("Pawn")))
+					{
+						let capturedId = Number(moveEndSquare.getAttribute("id")) + moveUp;
+						let capturedSquare = document.querySelector("[squareId='" + capturedId + "']");
+						moveEndSquare.append(moveStartPiece);
+						capturedSquare.children[0].remove();
+					}
+					else
+					{
+						if(moveStartPiece.id.includes("Pawn") && ((moveDown * 2) === Math.abs(moveStartId - moveEndId)))
+						{
+							enPassantSquare = document.querySelector("[squareId='" + (moveEndId + moveUp) + "']");
+							enPassantSquare.setAttribute("enPassantBlack", 0);
+						}
+						moveEndSquare.append(moveStartPiece);
+					}
+				}
+				else
+				{
+					return;
+				}
+			}
+		}
+
+		changeColorTurn();
+		progressEnPassant();
+		clearDefended();
+	
+		let whiteKingSquareId = Number(document.querySelector("[pieceId='" + 28 + "']").parentNode.getAttribute("squareId"));
+		let blackKingSquareId = Number(document.querySelector("[pieceId='" + 4 + "']").parentNode.getAttribute("squareId"));
+	
+		allLegalMovesWhite = [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]];
+		allLegalMovesBlack = [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]];
+		populateDefaultKingMoves(whiteKingSquareId, true);
+		populateDefaultKingMoves(blackKingSquareId, false);
+		if(colorTurn === "white")
+		{
+			handlePinnedPieces(whiteKingSquareId);
+		}
+		else
+		{
+			handlePinnedPieces(blackKingSquareId);
+		}
+		populateAllLegalMovesWhite();
+		populateAllLegalMovesBlack();
+		populateAllLegalMovesKings();
+		clearPinned();
 		
+		
+		
+		if(colorTurn === "white")
+		{
+			if(isUnderAttack(whiteKingSquareId, true))
+			{
+				handleCheck(whiteKingSquareId);
+			}
+		}
+		else
+		{
+			if(isUnderAttack(blackKingSquareId, false))
+			{
+				handleCheck(blackKingSquareId);
+			}
+		}
 	}
 }
 
@@ -2660,6 +3252,43 @@ function fileToLetter(fileNumber)
 		return "h";
 	}
 }
+
+function letterToFile(fileLetter)
+{
+	if(fileLetter === "a")
+	{
+		return 0;
+	}
+	else if(fileLetter === "b")
+	{
+		return 1;
+	}
+	else if(fileLetter === "c")
+	{
+		return 2;
+	}
+	else if(fileLetter === "d")
+	{
+		return 3;
+	}
+	else if(fileLetter === "e")
+	{
+		return 4;
+	}
+	else if(fileLetter === "f")
+	{
+		return 5;
+	}
+	else if(fileLetter === "g")
+	{
+		return 6;
+	}
+	else
+	{
+		return 7;
+	}
+}
+
 
 function clearPinned()
 {
@@ -2877,14 +3506,22 @@ function dragDrop(e)
 				{
 					if(colorTurn === "black")
 					{
-						return;
+						isSendingMove = false;
+					}
+					else
+					{
+						isSendingMove = true;
 					}
 				}
 				else
 				{
 					if(colorTurn === "white")
 					{
-						return;
+						isSendingMove = false;
+					}
+					else
+					{
+						isSendingMove = true;
 					}
 				}
 			}
