@@ -114,9 +114,9 @@ const PopupLoginLarge = ({ onClose }) => {
         <div className={styles.popupheader}>
           <div className={styles.popuptexterrors}>
             <span className={styles.popuptexterrorsTxt}>
-              <span>{`Errors and `}</span>
-              <span className={styles.alerts}>alerts</span>
-              <span> appear here.</span>
+              <span ref={errorsRef} className={styles.popuptexterrorsTxt}>
+                Errors and alerts appear here.
+              </span>
             </span>
           </div>
           <b className={styles.popuptexttitlelogin}>Login</b>
