@@ -7,6 +7,7 @@ const numFiles = 8;
 const endOfRank = 7;
 const endOfFile = 56;
 var gameID;
+var currentMoves;
 var isSendingMove = true;
 var movesRecieved;
 var playerColor = true;
@@ -2401,6 +2402,180 @@ function playIfValidMove()
 				}
 			}
 		}
+
+		let move = "";
+		let otherPiece;
+		let moveStartPieceId = Number(moveStartPiece.getAttribute("pieceId"));
+		let startRank = Math.floor(moveStartId / numRanks);
+		let startFile = moveStartId % numFiles;
+		let rank = Math.floor(moveEndId / numRanks);
+		let file = moveEndId % numFiles;
+		let newRank;
+		let newFile;
+		if(moveStartPiece.id.includes("King"))
+		{
+			move += "K";
+		}
+		else if(moveStartPiece.id.includes("Queen"))
+		{
+			move += "Q";
+		}
+		else if(moveStartPiece.id.includes("Rook"))
+		{
+			move += "R";
+			if(moveStartPiece.id.includes("white"))
+			{
+				if(moveStartPieceId === 24)
+				{
+					if(allLegalMovesWhite[31].includes(moveEndId))
+					{
+						otherPiece = document.querySelector("[pieceId='" + 31 + "']");
+						if(!(startRank === Math.floor(Number(otherPiece.parentNode.getAttribute("squareId")) / numRanks)))
+						{
+							newRank = startRank + 1
+							move += String(newRank);
+						}
+						else
+						{
+							move += fileToLetter(startFile);
+						}
+					}
+				}
+				else
+				{
+					if(allLegalMovesWhite[24].includes(moveEndId))
+					{
+						otherPiece = document.querySelector("[pieceId='" + 24 + "']");
+						if(!(startRank === Math.floor(Number(otherPiece.parentNode.getAttribute("squareId")) / numRanks)))
+						{
+							newRank = startRank + 1
+							move += String(newRank);
+						}
+						else
+						{
+							move += fileToLetter(startFile);
+						}
+					}
+				}
+			}
+			else
+			{
+				if(moveStartPieceId === 0)
+				{
+					if(allLegalMovesWhite[7].includes(moveEndId))
+					{
+						otherPiece = document.querySelector("[pieceId='" + 7 + "']");
+						if(!(startRank === Math.floor(Number(otherPiece.parentNode.getAttribute("squareId")) / numRanks)))
+						{
+							newRank = startRank + 1
+							move += String(newRank);
+						}
+						else
+						{
+							move += fileToLetter(startFile);
+						}
+					}
+				}
+				else
+				{
+					if(allLegalMovesWhite[0].includes(moveEndId))
+					{
+						otherPiece = document.querySelector("[pieceId='" + 0 + "']");
+						if(!(startRank === Math.floor(Number(otherPiece.parentNode.getAttribute("squareId")) / numRanks)))
+						{
+							newRank = startRank + 1
+							move += String(newRank);
+						}
+						else
+						{
+							move += fileToLetter(startFile);
+						}
+					}
+				}
+			}
+		}
+		else if(moveStartPiece.id.includes("Bishop"))
+		{
+			move += "B";
+		}
+		else if(moveStartPiece.id.includes("Knight"))
+		{
+			move += "N";
+			if(moveStartPiece.id.includes("white"))
+			{
+				if(moveStartPieceId === 25)
+				{
+					if(allLegalMovesWhite[30].includes(moveEndId))
+					{
+						otherPiece = document.querySelector("[pieceId='" + 30 + "']");
+						if(!(startRank === Math.floor(Number(otherPiece.parentNode.getAttribute("squareId")) / numRanks)))
+						{
+							newRank = startRank + 1
+							move += String(newRank);
+						}
+						else
+						{
+							move += fileToLetter(startFile);
+						}
+					}
+				}
+				else
+				{
+					if(allLegalMovesWhite[25].includes(moveEndId))
+					{
+						otherPiece = document.querySelector("[pieceId='" + 25 + "']");
+						if(!(startRank === Math.floor(Number(otherPiece.parentNode.getAttribute("squareId")) / numRanks)))
+						{
+							newRank = startRank + 1
+							move += String(newRank);
+						}
+						else
+						{
+							move += fileToLetter(startFile);
+						}
+					}
+				}
+			}
+			else
+			{
+				if(moveStartPieceId === 1)
+				{
+					if(allLegalMovesWhite[6].includes(moveEndId))
+					{
+						otherPiece = document.querySelector("[pieceId='" + 6 + "']");
+						if(!(startRank === Math.floor(Number(otherPiece.parentNode.getAttribute("squareId")) / numRanks)))
+						{
+							newRank = startRank + 1
+							move += String(newRank);
+						}
+						else
+						{
+							move += fileToLetter(startFile);
+						}
+					}
+				}
+				else
+				{
+					if(allLegalMovesWhite[1].includes(moveEndId))
+					{
+						otherPiece = document.querySelector("[pieceId='" + 1 + "']");
+						if(!(startRank === Math.floor(Number(otherPiece.parentNode.getAttribute("squareId")) / numRanks)))
+						{
+							newRank = startRank + 1
+							move += String(newRank);
+						}
+						else
+						{
+							move += fileToLetter(startFile);
+						}
+					}
+				}
+			}
+		}
+		move += fileToLetter(file);
+		move += String(rank);
+
+		pushGameMoves(move);
 		
 		changeColorTurn();
 		progressEnPassant();
@@ -2446,6 +2621,42 @@ function playIfValidMove()
 	else
 	{
 		
+	}
+}
+
+function fileToLetter(fileNumber)
+{
+	if(fileNumber === 0)
+	{
+		return "a";
+	}
+	else if(fileNumber === 1)
+	{
+		return "b";
+	}
+	else if(fileNumber === 2)
+	{
+		return "c";
+	}
+	else if(fileNumber === 3)
+	{
+		return "d";
+	}
+	else if(fileNumber === 4)
+	{
+		return "e";
+	}
+	else if(fileNumber === 5)
+	{
+		return "f";
+	}
+	else if(fileNumber === 6)
+	{
+		return "g";
+	}
+	else
+	{
+		return "h";
 	}
 }
 
@@ -2585,14 +2796,15 @@ function toWhiteBoardPOV()
 	});
 }
 
-async function fetchGameMoves(gameID)
+async function pushGameMoves(move)
 {
+	currentMoves.push(move);
 	try
 	{
-		const response = await fetch(`/api/games/${gameID}/moves`);
+		const response = await fetch(`/api/games/${gameID}/moves`, body: move);
 		if (!response.ok)
 		{
-			throw new Error("Failed to fetch game moves");
+			throw new Error("Failed to push game moves");
 		}
 		const data = await response.json();
 		return data.moves;
@@ -2604,7 +2816,7 @@ async function fetchGameMoves(gameID)
 	}
 }
 
-async function pushGameMoves()
+async function fetchGameMoves(gameID)
 {
 	try
 	{
