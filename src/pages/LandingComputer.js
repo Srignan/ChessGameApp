@@ -248,7 +248,7 @@ useEffect(() => {
                 src="/navprofilepic@2x.png"
               />
               <div className={styles.navelo}>(0)</div>
-              <b ref={welcomeRef} className={styles.navusername}>Username</b>
+              <b ref={headerRef} className={styles.navusername}>Username</b>
             </div>
             <div className={styles.pageselectcontact} />
             <b className={styles.navcontact} onClick={onNavContactTextClick}>
