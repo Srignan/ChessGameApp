@@ -9,14 +9,14 @@ const PopupNoAPI = ({ onClose }) => {
         <b className={styles.popuptexttitlewarning}>Error</b>
       </div>
       <img
-        className={styles.popupimgclosebuttonIcon}
+        className={`${styles.popupimgclosebuttonIcon} ${styles.shrink}`}
         alt=""
         src="/popupimgclosebutton4@2x.png"
         onClick={onClose}
       />
       <div className={styles.popupleavebuttons}>
         <button
-          className={styles.popupbuttoncancel}
+          className={`${styles.popupbuttoncancel} ${styles.shrink}`}
           id="buttonCancel"
           onClick={onClose}
         >
