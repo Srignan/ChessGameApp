@@ -27,7 +27,7 @@ const IndexTablet = () => {
   }, [navigate]);
 
   const onFooterImgGitHubClick = useCallback(() => {
-    window.open("https://www.google.com/search?q=github");
+    window.open("https://github.com/Srignan/ChessGameApp");
   }, []);
 
   const onFooterButtonBackClick = useCallback(() => {
@@ -40,7 +40,7 @@ const IndexTablet = () => {
   }, []);
 
   const onFooterImgDiscordClick = useCallback(() => {
-    window.open("https://www.google.com/search?q=discord");
+    window.open("https://discord.gg/by5ThVTN");
   }, []);
 
   const openPopupSideSO = useCallback(() => {
@@ -88,8 +88,8 @@ const IndexTablet = () => {
               src="/imglogomain1@2x.png"
             />
             <b className={styles.textlogoright}>Chess</b>
-            <b className={styles.textlogoleft}>Chess</b>
-            <div className={styles.textcalltoaction}>Call to Action!</div>
+            <b className={styles.textlogoleft}>Tactic</b>
+            <div className={styles.textcalltoaction}>Play. Strategize. Triumph!</div>
           </div>
         </div>
         <div className={styles.content1}>
