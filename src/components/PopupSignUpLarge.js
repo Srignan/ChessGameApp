@@ -193,7 +193,7 @@ const PopupSignUpLarge = ({ onClose }) => {
           </b>
         </div>
         <button
-          className={`${styles.popupbuttonsignup} ${styles.shrink}`}
+          className={`${styles.popupbuttonsignup} ${styles.grow}`}
           id="buttonSignUp"
           onClick={onPopupButtonSignUpClick}
         >
