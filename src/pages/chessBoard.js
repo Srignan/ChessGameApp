@@ -2574,8 +2574,9 @@ function playIfValidMove()
 		}
 		move += fileToLetter(file);
 		move += String(rank);
+		let moves = [move];
 
-		pushGameMoves(gameID, move);
+		pushGameMoves(moves);
 		
 		changeColorTurn();
 		progressEnPassant();
@@ -2796,11 +2797,11 @@ function toWhiteBoardPOV()
 	});
 }
 
-async function pushGameMoves(gameID, move)
+async function pushGameMoves(moves)
 {
 	try
 	{
-		const response = await fetch('/api/games/ ' + gameID + '/moves', {method: 'POST', body: [move],});
+		const response = await fetch('/api/games/ ' + gameID + '/moves', {method: 'POST', body: moves,});
 		if (!response.ok)
 		{
 			throw new Error("Failed to push game moves");
