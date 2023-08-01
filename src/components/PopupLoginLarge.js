@@ -30,10 +30,6 @@ const PopupLoginLarge = ({ onClose }) => {
     login();
   }, []); // *
 
-  // Create a ref for each input element
-  const inputUserEmailRef = useRef(null);
-  const inputPassRef = useRef(null);
-
   // Ref for the error messages.
   const errorsRef = useRef("");
 
