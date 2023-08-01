@@ -1,4 +1,4 @@
-import { useState, useCallback, useRef } from "react"; // * added useRef
+import { useState, useCallback, useRef, useEffect } from "react"; // * added useRef
 import PopupSignUpLarge from "./PopupSignUpLarge";
 import PortalPopup from "./PortalPopup";
 import PopupForgotLarge from "./PopupForgotLarge";
@@ -27,8 +27,30 @@ const PopupLoginLarge = ({ onClose }) => {
   }, []);
 
   const onPopupButtonLoginClick = useCallback(() => { // *
+    login();
+  }, []); // *
+
+  // Create a ref for each input element
+  const inputUserEmailRef = useRef(null);
+  const inputPassRef = useRef(null);
+
+  // Ref for the error messages.
+  const errorsRef = useRef("");
+
+  const login = useCallback(() => { // *
+    console.log("Attempting to log in.");
+    
+    
     const usernameOrEmail = inputUserEmailRef.current.value;
     const password = inputPassRef.current.value;
+
+    console.log("Username or email is: " + usernameOrEmail);
+    console.log("Password is: " + password);
+
+    // Reset the errors before the fetch calls
+    errorsRef.current.textContent = "";
+
+    // Perform login validation here.
 
     fetch('/api/auth/login', {
       method: 'POST',
@@ -36,11 +58,18 @@ const PopupLoginLarge = ({ onClose }) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ usernameOrEmail, password }),
-    })
-      .then((response) => response.json())
+      })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error('Server error logging in; please try again later.');
+        }
+      })
       .then((data) => {
         if (data.message) {
           console.log('User logged in successfully!');
+          // Save cookie
           navigate("/landing");
         } else {
           throw new Error('Login failed.');
@@ -48,8 +77,14 @@ const PopupLoginLarge = ({ onClose }) => {
       })
       .catch((error) => {
         console.error('Error:', error);
+        throw new Error('There was a server error; please try again later.');
       });
   }, [navigate]); // *
+
+  useEffect(() => {
+    // Clear errors on first load.
+    errorsRef.current.textContent = "";
+  }, []);
 
   const openPopupForgotLarge = useCallback(() => {
     setPopupForgotLargeOpen(true);
