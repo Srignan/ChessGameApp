@@ -116,7 +116,7 @@ const PopupSignUpLarge = ({ onClose }) => {
             <b className={styles.swapbuttonsignuptext}>Sign Up</b>
           </div>
           <button
-            className={styles.popupswapbuttonlogin}
+            className={`${styles.popupswapbuttonlogin} ${styles.grow}`}
             id="swapButtonLogin"
             onClick={openPopupLoginLarge}
           >
@@ -124,7 +124,7 @@ const PopupSignUpLarge = ({ onClose }) => {
           </button>
         </div>
         <button
-          className={styles.popupimgclosebutton}
+          className={`${styles.popupimgclosebutton} ${styles.shrink}`}
           id="closeButton"
           onClick={onClose}
         />
@@ -147,7 +147,7 @@ const PopupSignUpLarge = ({ onClose }) => {
             id="inputPassConfirm"
           />
           <button
-            className={styles.popupimghideconfirmpassword}
+            className={`${styles.popupimghideconfirmpassword} ${styles.shrink}`}
             id="viewPassButton"
             onClick={onPopupImgHideConfirmPasswordClick}
           />
@@ -164,7 +164,7 @@ const PopupSignUpLarge = ({ onClose }) => {
             id="inputPass"
           />
           <button
-            className={styles.popupimghidepassword}
+            className={`${styles.popupimghidepassword} ${styles.shrink}`}
             id="viewPassButton"
             onClick={onPopupImgHidePasswordClick}
           />
@@ -193,7 +193,7 @@ const PopupSignUpLarge = ({ onClose }) => {
           </b>
         </div>
         <button
-          className={styles.popupbuttonsignup}
+          className={`${styles.popupbuttonsignup} ${styles.shrink}`}
           id="buttonSignUp"
           onClick={onPopupButtonSignUpClick}
         >
