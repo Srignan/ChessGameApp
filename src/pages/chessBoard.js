@@ -2819,7 +2819,7 @@ async function fetchGameMoves()
 {
 	try
 	{
-		const response = await fetch('/api/games/${gameID}/moves', {method: 'POST', headers: {'Content-Type': 'application/json',}, body: move,});
+		const response = await fetch('/api/games/${gameID}/moves', {method: 'GET', headers: {'Content-Type': 'application/json',},});
 		if (!response.ok)
 		{
 			throw new Error("Failed to fetch game moves");
